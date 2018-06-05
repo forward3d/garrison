@@ -1,0 +1,31 @@
+.col-sidebar.col-fixed-primary.text-center
+  .top
+    %nav.nav
+      %a.nav-link.logo{href: "/"}
+        %i.fas.fa-chess-rook.fa-fw{alt: "Garrison Logo", style: "font-size:2.5em;", title: "Garrison"}
+      %a.nav-link{href: "/security", title: "Security"}
+        %i.fas.fa-fw.fa-exclamation-triangle{style: "font-size:2.5em;"}
+      %a.nav-link{href: "/compliance", title: "Compliance"}
+        %i.fas.fa-fw.fa-clipboard-check{style: "font-size:2.5em;"}
+      %a.nav-link{href: "/informational", title: "Informational"}
+        %span.fa-layers.fa-fw{style: "font-size:2.5em;"}
+          %i.fas.fa-info-circle
+          %span.fa-layers-counter 1,419
+  .bottom
+    %nav.nav
+      .dropup
+        %a.nav-link{"data-toggle" => "dropdown", href: "", title: "Profile"}
+          %i.fas.fa-user-shield{style: "font-size:2.5em;"}
+        .dropdown-menu
+          %h6.dropdown-header Lloyd
+          .dropdown-divider
+          %a.dropdown-item{href: "/profile"}
+            %i.far.fa-fw.fa-user
+            Your Profile
+          %a.dropdown-item{href: "/users/edit"}
+            %i.fas.fa-shield-alt
+            Security Settings
+          .dropdown-divider
+          %a.dropdown-item{"data-method" => "delete", href: "/sign_out", rel: "nofollow"}
+            %i.fas.fa-sign-out-alt
+            Sign Out
