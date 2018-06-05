@@ -13,6 +13,7 @@ gem 'jbuilder', '~> 2.5'
 
 # frontend
 gem 'coffee-rails', '~> 4.2'
+gem 'haml', '~> 5.0', '>= 5.0.4'
 gem 'sass-rails', '~> 5.0'
 gem 'turbolinks', '~> 5'
 gem 'uglifier', '>= 1.3.0'
