@@ -1,0 +1,58 @@
+.col-sidebar
+  position: fixed
+  height: 100vh
+  z-index: 1
+
+@media screen and (orientation: portrait)
+  .col-sidebar
+    height: 100%
+
+@media screen and (orientation: landscape)
+  .col-sidebar
+    height: 100%
+
+.col-fixed-primary
+  background: linear-gradient(to bottom, #22252c 0%, #3e404c 100%)
+  display: flex
+  flex-direction: column
+  -webkit-box-direction: normal
+  -webkit-box-orient: vertical
+  -ms-flex-direction: column
+  -webkit-flex-direction: column
+  width: 64px
+  z-index: 2
+
+.fa-layers-counter
+  background: tomato
+
+.col-fixed-primary
+  .top
+    flex-grow: 1
+    flex-shrink: 1
+    flex-basis: 0
+    margin-top: 10px
+    align-self: center
+  nav
+    align-self: center
+    i
+      color: #fff
+      &:hover
+        color: #7A7D7D
+  .bottom
+    margin-bottom: 15px
+    align-self: center
+    flex-grow: 0
+    .dropdown-item i
+      color: black
+  .logo
+    margin-bottom: 10px
+
+.col-offset-sidebar
+  margin-left: 70px
+  margin-right: 10px
+  padding-left: 10px
+  padding-right: 0px
+  z-index: 0
+
+.content
+  margin-top: 10px
