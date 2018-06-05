@@ -1,5 +1,7 @@
 {
   "name": "garrison",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "bootstrap": "^4.1.1"
+  }
 }
