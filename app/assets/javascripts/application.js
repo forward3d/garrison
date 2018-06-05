@@ -15,4 +15,8 @@
 //= require turbolinks
 //= require jquery/dist/jquery
 //= require bootstrap/dist/js/bootstrap
+//= require @fortawesome/fontawesome
+//= require @fortawesome/fontawesome-free-regular
+//= require @fortawesome/fontawesome-free-solid
+//= require @fortawesome/fontawesome-free-brands
 //= require_tree .
