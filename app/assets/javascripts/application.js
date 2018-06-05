@@ -20,4 +20,5 @@
 //= require @fortawesome/fontawesome-free-regular
 //= require @fortawesome/fontawesome-free-solid
 //= require @fortawesome/fontawesome-free-brands
+//= require chart.js/dist/Chart.js
 //= require_tree .
