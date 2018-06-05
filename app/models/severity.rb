@@ -1,0 +1,2 @@
+class Severity < ApplicationRecord
+end

@@ -1,0 +1,2 @@
+class AlertDepartment < ApplicationRecord
+end

@@ -1,0 +1,2 @@
+class Kind < ApplicationRecord
+end

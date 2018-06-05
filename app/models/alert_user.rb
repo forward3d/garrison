@@ -1,0 +1,2 @@
+class AlertUser < ApplicationRecord
+end
