@@ -14,12 +14,12 @@
 //= require activestorage
 //= require turbolinks
 //= require jquery/dist/jquery
-//= require moment/moment.js
-//= require popper.js/dist/popper.js
+//= require moment/moment
+//= require popper.js/dist/umd/popper
 //= require bootstrap/dist/js/bootstrap
 //= require @fortawesome/fontawesome
 //= require @fortawesome/fontawesome-free-regular
 //= require @fortawesome/fontawesome-free-solid
 //= require @fortawesome/fontawesome-free-brands
-//= require chart.js/dist/Chart.js
+//= require chart.js/dist/Chart
 //= require_tree .
