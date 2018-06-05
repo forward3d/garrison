@@ -14,6 +14,7 @@
 //= require activestorage
 //= require turbolinks
 //= require jquery/dist/jquery
+//= require popper.js/dist/popper.js
 //= require bootstrap/dist/js/bootstrap
 //= require @fortawesome/fontawesome
 //= require @fortawesome/fontawesome-free-regular
