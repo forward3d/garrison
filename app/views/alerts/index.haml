@@ -1,0 +1,361 @@
+.row
+  .alerts.col-3.col-sm-5.col-md-4.col-lg-3.col-xl-3
+    .alert-box.critical-bg
+      .icon
+        %i.fab.fa-fw.fa-amazon.fa-5x
+      .title Recon:EC2/PortProbeUnprotectedPort
+      .target Instance: i-0edf6a0becf2f0466efa0be
+      .detail Port: 21
+      .source AWS RDS
+      .date 2018-05-05 14:59:05 UTC
+    .alert-box.high-bg
+      .icon
+        %i.fab.fa-fw.fa-amazon.fa-5x
+      .title Recon:EC2/PortProbeUnprotectedPort
+      .target Instance: i-0edf6a0becf2f0466efa0be
+      .detail Port: 21
+      .source AWS RDS
+      .date 2018-05-05 14:59:05 UTC
+    .alert-box.high-bg
+      .icon
+        %i.fab.fa-fw.fa-amazon.fa-5x
+      .title Encryption Violation
+      .target Instance: i-0edf6a0becf2f0466efa0be
+      .detail Port: 21
+      .source AWS RDS
+      .date 2018-05-05 14:59:05 UTC
+    .alert-box.medium-bg
+      .icon
+        %i.fab.fa-fw.fa-amazon.fa-5x
+      .title Encryption Violation
+      .target Instance: i-0edf6a0becf2f0466efa0be
+      .detail Port: 21
+      .source AWS RDS
+      .date 2018-05-05 14:59:05 UTC
+    .alert-box.medium-bg
+      .icon
+        %i.fab.fa-fw.fa-amazon.fa-5x
+      .title Encryption Violation
+      .target Instance: i-0edf6a0becf2f0466efa0be
+      .detail Port: 21
+      .source AWS RDS
+      .date 2018-05-05 14:59:05 UTC
+    .alert-box.low-bg
+      .icon
+        %i.fab.fa-fw.fa-amazon.fa-5x
+      .title Encryption Violation
+      .target Instance: i-0edf6a0becf2f0466efa0be
+      .detail Port: 21
+      .source AWS RDS
+      .date 2018-05-05 14:59:05 UTC
+    .alert-box.low-bg
+      .icon
+        %i.fab.fa-fw.fa-amazon.fa-5x
+      .title Encryption Violation
+      .target Instance: i-0edf6a0becf2f0466efa0be
+      .detail Port: 21
+      .source AWS RDS
+      .date 2018-05-05 14:59:05 UTC
+    .alert-box.info-bg
+      .icon
+        %i.fab.fa-fw.fa-amazon.fa-5x
+      .title Encryption Violation
+      .target Instance: i-0edf6a0becf2f0466efa0be
+      .detail Port: 21
+      .source AWS RDS
+      .date 2018-05-05 14:59:05 UTC
+    .alert-box.info-bg
+      .icon
+        %i.fab.fa-fw.fa-amazon.fa-5x
+      .title Encryption Violation
+      .target Instance: i-0edf6a0becf2f0466efa0be
+      .detail Port: 21
+      .source AWS RDS
+      .date 2018-05-05 14:59:05 UTC
+    .alert-box.info-bg
+      .icon
+        %i.fab.fa-fw.fa-amazon.fa-5x
+      .title Encryption Violation
+      .target Instance: i-0edf6a0becf2f0466efa0be
+      .detail Port: 21
+      .source AWS RDS
+      .date 2018-05-05 14:59:05 UTC
+  .alert-detail.col-9.offset-3.offset-sm-5.offset-md-4.offset-lg-3.offset-xl-3
+    .title
+      Encryption Violation
+      %span.id GARRISON-2205
+    %div
+      .rightbar
+        .header{:style => "margin-top: 0px"} Details
+        %table.table.table-striped.table-hover.table-sm
+          %tbody
+            %tr
+              %td.key Count
+              %td.detail 1
+            %tr
+              %td.key Department
+              %td.detail Development
+            %tr
+              %td.key Assigned
+              %td.detail Lloyd Pick
+            %tr
+              %td.key Ticket
+              %td.detail TD-2403
+        .header Dates
+        %table.table.table-striped.table-hover.table-sm
+          %tbody
+            %tr
+              %td.key Detected
+              %td.detail 2018-05-05 14:59:05 UTC
+            %tr
+              %td.key Assigned
+              %td.detail 2018-05-05 16:59:05 UTC
+            %tr
+              %td.key Resolved
+              %td.detail 2018-05-06 10:04:53 UTC
+        .header Time Frames
+        %table.table.table-striped.table-hover.table-sm
+          %tbody
+            %tr
+              %td.key Detected → Assigned
+              %td.detail 2 hours
+            %tr
+              %td.key Detected → Resolved
+              %td.detail 1 day
+        .header Key Value
+        %table.table.table-striped.table-hover.table-sm
+          %tbody
+            %tr
+              %td.key Region
+              %td.detail eu-west-1
+            %tr
+              %td.key AWS Account
+              %td.detail 073096375236
+        .header Tags
+        %table.table.table-striped.table-hover.table-sm
+          %tbody
+            %tr
+              %td.key Environment
+              %td.detail production
+      .row.basic
+        .col
+          .key Type
+          Security
+        .col
+          .key Family
+          Software
+        .col
+          .key Source
+          %i.fab.fa-amazon
+          AWS RDS
+      .row.basic
+        .col
+          .key Status
+          %span.badge.low-bg Resolved
+        .col
+          .key External Severity
+          %span.badge.critical-bg Critical
+        .col
+          .key Internal Severity
+          %span.badge.medium-bg Medium
+      .row.basic
+        .col
+          .key Finding ID
+          %pre
+            %code 80b1b7a55e39473334356847e6616906
+        .col
+          .key Target
+          %pre
+            %code fshgkfgwv6qyy9
+        .col
+          .key Detail
+          %pre
+            %code Not Encrypted
+      %hr/
+      %h5 Timeline
+      .row.timeline
+        .col-1.pip
+          %i.fas.fa-check-circle
+        .col.date 2018-05-06 10:04:53 UTC
+        .col.action Status Change
+        .col.detail Set to Resolved
+        .col.author Lloyd Pick
+      .row.timeline
+        .col-1.pip
+          %i.fas.fa-dot-circle
+        .col.date 2018-05-06 16:45:47 UTC
+        .col.action Notes
+        .col.detail Added
+        .col.author Lloyd Pick
+      .row.timeline
+        .col-1.pip
+          %i.fas.fa-chevron-circle-down
+        .col.date 2018-05-05 17:12:01 UTC
+        .col.action Internal Severity
+        .col.detail Set to Medium
+        .col.author Lloyd Pick
+      .row.timeline
+        .col-1.pip
+          %i.fas.fa-user-circle
+        .col.date 2018-05-05 16:59:05 UTC
+        .col.action Assigned To
+        .col.detail Lloyd Pick
+        .col.author Lloyd Pick
+      .row.timeline
+        .col-1.pip
+          %i.fas.fa-exclamation-circle
+        .col.date 2018-05-05 14:59:05 UTC
+        .col.action Detected
+        .col.detail New Alert
+        .col.author AWS RDS Agent
+      %hr/
+      %h5 URLs
+      %ul
+        %li https://docs.aws.amazon.com/lambda/latest/dg/current-supported-versions.html
+      %hr/
+      %h5 Notes
+      %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec gravida magna. Nunc aliquam sed risus et bibendum. Aliquam sollicitudin at elit sed interdum. Vivamus iaculis rutrum eros, in cursus ante tincidunt et. Donec viverra lacus in orci rutrum, ac consequat est hendrerit. Sed mollis justo porttitor sem finibus, sit amet auctor ipsum elementum. Nunc feugiat elit eget egestas mollis. Donec a varius nisi.
+      %hr/
+      %h5 Raw Finding
+      %pre
+        %code.raw
+          :preserve
+
+            [
+              {
+                "schemaVersion": "2.0",
+                "accountId": "073096375236",
+                "region": "eu-west-1",
+                "partition": "aws",
+                "id": "80b1b7a55e39473334356847e6616906",
+                "arn": "arn:aws:guardduty:eu-west-1:073096375236:detector/14b1b530447821c9ef104c1b0a7efcf1/finding/80b1b7a55e39473334356847e6616906",
+                "type": "Recon:EC2/PortProbeUnprotectedPort",
+                "resource": {
+                  "resourceType": "Instance",
+                  "instanceDetails": {
+                    "instanceId": "i-0edf6a0becf2f0466",
+                    "instanceType": "t2.small",
+                    "launchTime": "2017-08-03T12:53:36Z",
+                    "platform": null,
+                    "productCodes": [],
+                    "iamInstanceProfile": {
+                      "arn": "arn:aws:iam::073096375236:instance-profile/transitum-TransitumFtpEC2Profile-POQCC2216ZFK",
+                      "id": "AIPAJ7367G4QTUWTC255G"
+                    },
+                    "networkInterfaces": [
+                      {
+                        "ipv6Addresses": [],
+                        "networkInterfaceId": "eni-bfeaf895",
+                        "privateDnsName": "ip-192-168-208-143.eu-west-1.compute.internal",
+                        "privateIpAddress": "192.168.208.143",
+                        "privateIpAddresses": [
+                          {
+                            "privateDnsName": "ip-192-168-208-143.eu-west-1.compute.internal",
+                            "privateIpAddress": "192.168.208.143"
+                          }
+                        ],
+                        "subnetId": "subnet-a3f87bc7",
+                        "vpcId": "vpc-b93094dd",
+                        "securityGroups": [
+                          {
+                            "groupName": "default",
+                            "groupId": "sg-0d23556a"
+                          },
+                          {
+                            "groupName": "transitum-TransitumFtpEC2SecurityGroup-1FAXDIMI6ZSJB",
+                            "groupId": "sg-96e460ee"
+                          }
+                        ],
+                        "publicDnsName": "ec2-54-229-60-167.eu-west-1.compute.amazonaws.com",
+                        "publicIp": "54.229.60.167"
+                      }
+                    ],
+                    "tags": [
+                      {
+                        "key": "aws:cloudformation:logical-id",
+                        "value": "TransitumFtpAutoscalingGroup"
+                      },
+                      {
+                        "key": "Name",
+                        "value": "transitum-ftp.tech.forward3d.com"
+                      },
+                      {
+                        "key": "aws:cloudformation:stack-name",
+                        "value": "transitum"
+                      },
+                      {
+                        "key": "aws:autoscaling:groupName",
+                        "value": "transitum-TransitumFtpAutoscalingGroup-10JSG9433I3Y5"
+                      },
+                      {
+                        "key": "billing",
+                        "value": "transitum"
+                      },
+                      {
+                        "key": "project",
+                        "value": "transitum"
+                      },
+                      {
+                        "key": "aws:cloudformation:stack-id",
+                        "value": "arn:aws:cloudformation:eu-west-1:073096375236:stack/transitum/95053ff0-7149-11e7-99c1-500c4267f899"
+                      }
+                    ],
+                    "instanceState": "running",
+                    "availabilityZone": "eu-west-1c",
+                    "imageId": "ami-1473866d",
+                    "imageDescription": "amzn-ami-hvm-2017.03.1.20170623-x86_64-gp2"
+                  }
+                },
+                "service": {
+                  "serviceName": "guardduty",
+                  "detectorId": "14b1b530447821c9ef104c1b0a7efcf1",
+                  "action": {
+                    "actionType": "PORT_PROBE",
+                    "portProbeAction": {
+                      "portProbeDetails": [
+                        {
+                          "localPortDetails": {
+                            "port": 20000,
+                            "portName": "Unknown"
+                          },
+                          "remoteIpDetails": {
+                            "ipAddressV4": "31.184.193.157",
+                            "organization": {
+                              "asn": "44050",
+                              "asnOrg": "Petersburg Internet Network ltd.",
+                              "isp": "Petersburg Internet Network ltd.",
+                              "org": "Petersburg Internet Network ltd."
+                            },
+                            "country": {
+                              "countryName": "Russia"
+                            },
+                            "city": {
+                              "cityName": "St Petersburg"
+                            },
+                            "geoLocation": {
+                              "lat": 59.8944,
+                              "lon": 30.2642
+                            }
+                          }
+                        }
+                      ],
+                      "blocked": false
+                    }
+                  },
+                  "resourceRole": "TARGET",
+                  "additionalInfo": {
+                    "threatName": "Scanner",
+                    "threatListName": "ProofPoint"
+                  },
+                  "eventFirstSeen": "2018-05-17T17:58:10Z",
+                  "eventLastSeen": "2018-06-03T20:35:33Z",
+                  "archived": false,
+                  "count": 26
+                },
+                "severity": 2,
+                "createdAt": "2018-05-17T18:09:18.962Z",
+                "updatedAt": "2018-06-03T20:39:15.901Z",
+                "title": "Unprotected port on EC2 instance i-0edf6a0becf2f0466 is being probed.",
+                "description": "EC2 instance has an unprotected port which is being probed by a known malicious host."
+              }
+            ]
