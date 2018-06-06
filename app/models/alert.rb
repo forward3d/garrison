@@ -24,4 +24,13 @@ class Alert < ApplicationRecord
   validates :finding, presence: true
   validates :first_detected_at, presence: true
 
+  after_create :touch_source_last_seen
+
+  private
+
+  def touch_source_last_seen
+    source.touch(:last_seen_at)
+    source.touch(:last_alert_at)
+  end
+
 end
