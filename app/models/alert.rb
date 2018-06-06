@@ -16,4 +16,12 @@ class Alert < ApplicationRecord
   has_many :urls
   has_many :key_values
 
+  validates :state, presence: true
+  validates :kind, presence: true
+  validates :family, presence: true
+  validates :source, presence: true
+  validates :name, presence: true
+  validates :finding, presence: true
+  validates :first_detected_at, presence: true
+
 end
