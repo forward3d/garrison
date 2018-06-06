@@ -54,7 +54,7 @@ class Alert < ApplicationRecord
   private
 
   def log_create_event
-    audits.create(kind: 'detected', action: 'Created Alert')
+    audits.create(kind: 'detected', action: 'Created Alert', icon: 'fas fa-exclamation-circle')
   end
 
   def log_status_change
