@@ -13,11 +13,12 @@
 ActiveRecord::Schema.define(version: 2018_06_05_191539) do
 
   # These are extensions that must be enabled in order to support this database
+  enable_extension "pgcrypto"
   enable_extension "plpgsql"
 
-  create_table "alert_departments", force: :cascade do |t|
-    t.bigint "alert_id", null: false
-    t.bigint "department_id", null: false
+  create_table "alert_departments", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "alert_id", null: false
+    t.uuid "department_id", null: false
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -25,9 +26,9 @@ ActiveRecord::Schema.define(version: 2018_06_05_191539) do
     t.index ["department_id"], name: "index_alert_departments_on_department_id"
   end
 
-  create_table "alert_users", force: :cascade do |t|
-    t.bigint "alert_id", null: false
-    t.bigint "user_id", null: false
+  create_table "alert_users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "alert_id", null: false
+    t.uuid "user_id", null: false
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -35,17 +36,17 @@ ActiveRecord::Schema.define(version: 2018_06_05_191539) do
     t.index ["user_id"], name: "index_alert_users_on_user_id"
   end
 
-  create_table "alerts", force: :cascade do |t|
+  create_table "alerts", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "state", null: false
-    t.bigint "kind_id", null: false
-    t.bigint "family_id", null: false
-    t.bigint "source_id", null: false
+    t.uuid "kind_id", null: false
+    t.uuid "family_id", null: false
+    t.uuid "source_id", null: false
     t.integer "count", default: 1
     t.string "name", null: false
     t.string "target"
     t.string "detail"
-    t.bigint "severity_external_id"
-    t.bigint "severity_internal_id"
+    t.uuid "severity_external_id"
+    t.uuid "severity_internal_id"
     t.string "ticket"
     t.text "notes"
     t.json "finding", null: false
@@ -64,25 +65,25 @@ ActiveRecord::Schema.define(version: 2018_06_05_191539) do
     t.index ["source_id"], name: "index_alerts_on_source_id"
   end
 
-  create_table "audits", force: :cascade do |t|
-    t.bigint "alert_id", null: false
+  create_table "audits", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "alert_id", null: false
     t.string "icon"
     t.string "kind", null: false
     t.string "action", null: false
-    t.string "author", null: false
+    t.string "author"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["alert_id"], name: "index_audits_on_alert_id"
   end
 
-  create_table "departments", force: :cascade do |t|
+  create_table "departments", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", null: false
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "families", force: :cascade do |t|
+  create_table "families", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", null: false
     t.string "icon"
     t.datetime "deleted_at"
@@ -90,8 +91,8 @@ ActiveRecord::Schema.define(version: 2018_06_05_191539) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "key_values", force: :cascade do |t|
-    t.bigint "alert_id", null: false
+  create_table "key_values", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "alert_id", null: false
     t.string "key", null: false
     t.string "value"
     t.datetime "deleted_at"
@@ -100,7 +101,7 @@ ActiveRecord::Schema.define(version: 2018_06_05_191539) do
     t.index ["alert_id"], name: "index_key_values_on_alert_id"
   end
 
-  create_table "kinds", force: :cascade do |t|
+  create_table "kinds", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", null: false
     t.string "icon"
     t.datetime "deleted_at"
@@ -108,7 +109,7 @@ ActiveRecord::Schema.define(version: 2018_06_05_191539) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "severities", force: :cascade do |t|
+  create_table "severities", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", null: false
     t.integer "order", null: false
     t.string "color"
@@ -118,7 +119,7 @@ ActiveRecord::Schema.define(version: 2018_06_05_191539) do
     t.index ["order"], name: "index_severities_on_order"
   end
 
-  create_table "sources", force: :cascade do |t|
+  create_table "sources", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", null: false
     t.string "icon"
     t.datetime "last_seen_at"
@@ -128,8 +129,8 @@ ActiveRecord::Schema.define(version: 2018_06_05_191539) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "urls", force: :cascade do |t|
-    t.bigint "alert_id", null: false
+  create_table "urls", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "alert_id", null: false
     t.string "name"
     t.string "url", null: false
     t.datetime "deleted_at"
@@ -138,7 +139,7 @@ ActiveRecord::Schema.define(version: 2018_06_05_191539) do
     t.index ["alert_id"], name: "index_urls_on_alert_id"
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", null: false
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
