@@ -9,7 +9,8 @@ gem 'puma', '~> 3.11'
 gem 'rails', '~> 5.2.0'
 
 # api
-gem 'jbuilder', '~> 2.5'
+# gem 'jbuilder', '~> 2.5'
+gem 'active_model_serializers', '~> 0.10.7'
 
 # models
 gem 'aasm', '~> 4.12', '>= 4.12.3'
