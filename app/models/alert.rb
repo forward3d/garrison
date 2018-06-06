@@ -1,5 +1,7 @@
 class Alert < ApplicationRecord
 
+  include AASM
+
   belongs_to :kind
   belongs_to :family
   belongs_to :source
@@ -13,6 +15,7 @@ class Alert < ApplicationRecord
   has_many :departments, through: :alert_departments
   has_many :users, through: :alert_users
 
+  has_many :audits
   has_many :urls
   has_many :key_values
 
@@ -25,8 +28,38 @@ class Alert < ApplicationRecord
   validates :first_detected_at, presence: true
 
   after_create :touch_source_last_seen
+  after_create :log_create_event
+
+  aasm column: 'state' do
+    after_all_transitions :log_status_change
+
+    state :unverified, initial: true
+    state :verified
+    state :rejected
+    state :resolved
+
+    event :verify do
+      transitions from: [:unverified], to: :verified
+    end
+
+    event :reject do
+      transitions from: [:verified, :unverified], to: :rejected
+    end
+
+    event :resolve do
+      transitions from: [:unverified, :verified], to: :resolved
+    end
+  end
 
   private
+
+  def log_create_event
+    audits.create(kind: 'detected', action: 'Created Alert')
+  end
+
+  def log_status_change
+    audits.create(kind: 'status change', action: "Set to #{aasm.to_state}")
+  end
 
   def touch_source_last_seen
     source.touch(:last_seen_at)

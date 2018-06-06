@@ -11,6 +11,9 @@ gem 'rails', '~> 5.2.0'
 # api
 gem 'jbuilder', '~> 2.5'
 
+# models
+gem 'aasm', '~> 4.12', '>= 4.12.3'
+
 # frontend
 gem 'coffee-rails', '~> 4.2'
 gem 'haml', '~> 5.0', '>= 5.0.4'

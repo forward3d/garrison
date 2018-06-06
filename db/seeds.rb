@@ -42,7 +42,6 @@ user_lloydpick = User.create(name: 'Lloyd Pick')
 source_aws_rds = Source.create(name: 'AWS RDS', icon: 'fab fa-amazon')
 
 Alert.create!(
-  state: 'test',
   name: 'Test Alert',
   finding: { some: 'data' }.to_json,
   finding_id: 'abcdef012345',
