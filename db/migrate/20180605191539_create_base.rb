@@ -2,12 +2,14 @@ class CreateBase < ActiveRecord::Migration[5.2]
   def change
     create_table :kinds do |t|
       t.string :name, null: false
+      t.string :icon
       t.datetime :deleted_at
       t.timestamps
     end
 
     create_table :families do |t|
       t.string :name, null: false
+      t.string :icon
       t.datetime :deleted_at
       t.timestamps
     end
@@ -50,8 +52,8 @@ class CreateBase < ActiveRecord::Migration[5.2]
       t.string :name, null: false
       t.string :target
       t.string :detail
-      t.bigint :severity_external, index: true
-      t.bigint :severity_internal, index: true
+      t.bigint :severity_external_id, index: true
+      t.bigint :severity_internal_id, index: true
       t.string :ticket
       t.text :notes
       t.json :finding, null: false
@@ -66,8 +68,8 @@ class CreateBase < ActiveRecord::Migration[5.2]
     add_foreign_key :alerts, :kinds
     add_foreign_key :alerts, :families
     add_foreign_key :alerts, :sources
-    add_foreign_key :alerts, :severities, column: :severity_external
-    add_foreign_key :alerts, :severities, column: :severity_internal
+    add_foreign_key :alerts, :severities, column: :severity_external_id
+    add_foreign_key :alerts, :severities, column: :severity_internal_id
 
     create_table :alert_departments do |t|
       t.references :alert, null: false

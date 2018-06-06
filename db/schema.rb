@@ -44,8 +44,8 @@ ActiveRecord::Schema.define(version: 2018_06_05_191539) do
     t.string "name", null: false
     t.string "target"
     t.string "detail"
-    t.bigint "severity_external"
-    t.bigint "severity_internal"
+    t.bigint "severity_external_id"
+    t.bigint "severity_internal_id"
     t.string "ticket"
     t.text "notes"
     t.json "finding", null: false
@@ -59,8 +59,8 @@ ActiveRecord::Schema.define(version: 2018_06_05_191539) do
     t.datetime "updated_at", null: false
     t.index ["family_id"], name: "index_alerts_on_family_id"
     t.index ["kind_id"], name: "index_alerts_on_kind_id"
-    t.index ["severity_external"], name: "index_alerts_on_severity_external"
-    t.index ["severity_internal"], name: "index_alerts_on_severity_internal"
+    t.index ["severity_external_id"], name: "index_alerts_on_severity_external_id"
+    t.index ["severity_internal_id"], name: "index_alerts_on_severity_internal_id"
     t.index ["source_id"], name: "index_alerts_on_source_id"
   end
 
@@ -84,6 +84,7 @@ ActiveRecord::Schema.define(version: 2018_06_05_191539) do
 
   create_table "families", force: :cascade do |t|
     t.string "name", null: false
+    t.string "icon"
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -101,6 +102,7 @@ ActiveRecord::Schema.define(version: 2018_06_05_191539) do
 
   create_table "kinds", force: :cascade do |t|
     t.string "name", null: false
+    t.string "icon"
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -149,8 +151,8 @@ ActiveRecord::Schema.define(version: 2018_06_05_191539) do
   add_foreign_key "alert_users", "users"
   add_foreign_key "alerts", "families"
   add_foreign_key "alerts", "kinds"
-  add_foreign_key "alerts", "severities", column: "severity_external"
-  add_foreign_key "alerts", "severities", column: "severity_internal"
+  add_foreign_key "alerts", "severities", column: "severity_external_id"
+  add_foreign_key "alerts", "severities", column: "severity_internal_id"
   add_foreign_key "alerts", "sources"
   add_foreign_key "audits", "alerts"
   add_foreign_key "key_values", "alerts"
