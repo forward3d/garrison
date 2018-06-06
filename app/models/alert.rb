@@ -1,6 +1,7 @@
 class Alert < ApplicationRecord
 
   include AASM
+  include Discard::Model
 
   belongs_to :kind
   belongs_to :family

@@ -82,6 +82,8 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.0.5)
     crass (1.0.4)
+    discard (1.0.0)
+      activerecord (>= 4.2, < 6)
     erubi (1.7.1)
     execjs (2.7.0)
     ffi (1.9.25)
@@ -209,6 +211,7 @@ DEPENDENCIES
   capybara (>= 2.15, < 4.0)
   chromedriver-helper
   coffee-rails (~> 4.2)
+  discard (~> 1.0)
   haml (~> 5.0, >= 5.0.4)
   listen (>= 3.0.5, < 3.2)
   pg (>= 0.18, < 2.0)

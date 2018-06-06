@@ -19,20 +19,22 @@ ActiveRecord::Schema.define(version: 2018_06_05_191539) do
   create_table "alert_departments", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "alert_id", null: false
     t.uuid "department_id", null: false
-    t.datetime "deleted_at"
+    t.datetime "discarded_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["alert_id"], name: "index_alert_departments_on_alert_id"
     t.index ["department_id"], name: "index_alert_departments_on_department_id"
+    t.index ["discarded_at"], name: "index_alert_departments_on_discarded_at"
   end
 
   create_table "alert_users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "alert_id", null: false
     t.uuid "user_id", null: false
-    t.datetime "deleted_at"
+    t.datetime "discarded_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["alert_id"], name: "index_alert_users_on_alert_id"
+    t.index ["discarded_at"], name: "index_alert_users_on_discarded_at"
     t.index ["user_id"], name: "index_alert_users_on_user_id"
   end
 
@@ -55,9 +57,10 @@ ActiveRecord::Schema.define(version: 2018_06_05_191539) do
     t.datetime "last_detected_at"
     t.datetime "assigned_at"
     t.datetime "resolved_at"
-    t.datetime "deleted_at"
+    t.datetime "discarded_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["discarded_at"], name: "index_alerts_on_discarded_at"
     t.index ["family_id"], name: "index_alerts_on_family_id"
     t.index ["kind_id"], name: "index_alerts_on_kind_id"
     t.index ["severity_external_id"], name: "index_alerts_on_severity_external_id"
@@ -78,44 +81,49 @@ ActiveRecord::Schema.define(version: 2018_06_05_191539) do
 
   create_table "departments", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", null: false
-    t.datetime "deleted_at"
+    t.datetime "discarded_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["discarded_at"], name: "index_departments_on_discarded_at"
   end
 
   create_table "families", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", null: false
     t.string "icon"
-    t.datetime "deleted_at"
+    t.datetime "discarded_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["discarded_at"], name: "index_families_on_discarded_at"
   end
 
   create_table "key_values", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "alert_id", null: false
     t.string "key", null: false
     t.string "value"
-    t.datetime "deleted_at"
+    t.datetime "discarded_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["alert_id"], name: "index_key_values_on_alert_id"
+    t.index ["discarded_at"], name: "index_key_values_on_discarded_at"
   end
 
   create_table "kinds", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", null: false
     t.string "icon"
-    t.datetime "deleted_at"
+    t.datetime "discarded_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["discarded_at"], name: "index_kinds_on_discarded_at"
   end
 
   create_table "severities", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", null: false
     t.integer "order", null: false
     t.string "color"
-    t.datetime "deleted_at"
+    t.datetime "discarded_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["discarded_at"], name: "index_severities_on_discarded_at"
     t.index ["order"], name: "index_severities_on_order"
   end
 
@@ -124,26 +132,29 @@ ActiveRecord::Schema.define(version: 2018_06_05_191539) do
     t.string "icon"
     t.datetime "last_seen_at"
     t.datetime "last_alert_at"
-    t.datetime "deleted_at"
+    t.datetime "discarded_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["discarded_at"], name: "index_sources_on_discarded_at"
   end
 
   create_table "urls", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "alert_id", null: false
     t.string "name"
     t.string "url", null: false
-    t.datetime "deleted_at"
+    t.datetime "discarded_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["alert_id"], name: "index_urls_on_alert_id"
+    t.index ["discarded_at"], name: "index_urls_on_discarded_at"
   end
 
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", null: false
-    t.datetime "deleted_at"
+    t.datetime "discarded_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["discarded_at"], name: "index_users_on_discarded_at"
   end
 
   add_foreign_key "alert_departments", "alerts"

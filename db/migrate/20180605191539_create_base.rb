@@ -5,14 +5,14 @@ class CreateBase < ActiveRecord::Migration[5.2]
     create_table :kinds, id: :uuid do |t|
       t.string :name, null: false
       t.string :icon
-      t.datetime :deleted_at
+      t.datetime :discarded_at, index: true
       t.timestamps
     end
 
     create_table :families, id: :uuid do |t|
       t.string :name, null: false
       t.string :icon
-      t.datetime :deleted_at
+      t.datetime :discarded_at, index: true
       t.timestamps
     end
 
@@ -21,7 +21,7 @@ class CreateBase < ActiveRecord::Migration[5.2]
       t.string :icon
       t.datetime :last_seen_at
       t.datetime :last_alert_at
-      t.datetime :deleted_at
+      t.datetime :discarded_at, index: true
       t.timestamps
     end
 
@@ -29,19 +29,19 @@ class CreateBase < ActiveRecord::Migration[5.2]
       t.string :name, null: false
       t.integer :order, index: true, null: false
       t.string :color
-      t.datetime :deleted_at
+      t.datetime :discarded_at, index: true
       t.timestamps
     end
 
     create_table :departments, id: :uuid do |t|
       t.string :name, null: false
-      t.datetime :deleted_at
+      t.datetime :discarded_at, index: true
       t.timestamps
     end
 
     create_table :users, id: :uuid do |t|
       t.string :name, null: false
-      t.datetime :deleted_at
+      t.datetime :discarded_at, index: true
       t.timestamps
     end
 
@@ -64,7 +64,7 @@ class CreateBase < ActiveRecord::Migration[5.2]
       t.datetime :last_detected_at
       t.datetime :assigned_at
       t.datetime :resolved_at
-      t.datetime :deleted_at
+      t.datetime :discarded_at, index: true
       t.timestamps
     end
     add_foreign_key :alerts, :severities, column: :severity_external_id
@@ -73,7 +73,7 @@ class CreateBase < ActiveRecord::Migration[5.2]
     create_table :alert_departments, id: :uuid do |t|
       t.references :alert, null: false, type: :uuid
       t.references :department, null: false, type: :uuid
-      t.datetime :deleted_at
+      t.datetime :discarded_at, index: true
       t.timestamps
     end
     add_foreign_key :alert_departments, :alerts
@@ -82,7 +82,7 @@ class CreateBase < ActiveRecord::Migration[5.2]
     create_table :alert_users, id: :uuid do |t|
       t.references :alert, null: false, type: :uuid
       t.references :user, null: false, type: :uuid
-      t.datetime :deleted_at
+      t.datetime :discarded_at, index: true
       t.timestamps
     end
     add_foreign_key :alert_users, :alerts
@@ -92,7 +92,7 @@ class CreateBase < ActiveRecord::Migration[5.2]
       t.references :alert, null: false, type: :uuid
       t.string :name
       t.string :url, null: false
-      t.datetime :deleted_at
+      t.datetime :discarded_at, index: true
       t.timestamps
     end
     add_foreign_key :urls, :alerts
@@ -101,7 +101,7 @@ class CreateBase < ActiveRecord::Migration[5.2]
       t.references :alert, null: false, type: :uuid
       t.string :key, null: false
       t.string :value
-      t.datetime :deleted_at
+      t.datetime :discarded_at, index: true
       t.timestamps
     end
     add_foreign_key :key_values, :alerts

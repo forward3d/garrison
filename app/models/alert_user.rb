@@ -1,5 +1,7 @@
 class AlertUser < ApplicationRecord
 
+  include Discard::Model
+
   belongs_to :alert
   belongs_to :user
 
