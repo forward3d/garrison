@@ -4,6 +4,65 @@
   height: 100%
   overflow-y: scroll
   margin-top: -10px
+  background-color: #2b2d35
+
+  .alert-box
+    display: block
+    overflow: hidden
+    word-wrap: break-word
+    position: relative
+    border-radius: 0
+    min-height: 96px
+    padding-left: 5px
+    padding-top: 5px
+    padding-bottom: 15px
+
+    &:hover
+      background-color: #A9BBB8 !important
+      // cursor: pointer
+
+    .icon
+      color: rgba(255, 255, 255, 0.3)
+      position: absolute
+      top: 5px
+      right: 0px
+
+    .title
+      font-weight: bold
+      color: #fff
+      line-height: normal
+      font-size: medium
+
+    .target
+      color: #fff
+      line-height: normal
+      font-size: small
+      font-family: Ubuntu Mono
+
+    .detail
+      font-weight: normal
+      line-height: normal
+      font-family: Ubuntu Mono
+      color: rgba(255, 255, 255, 0.75)
+      font-size: small
+
+    .source
+      position: absolute
+      bottom: 0px
+      left: 0px
+      font-size: x-small
+      padding-left: 5px
+      color: rgba(255, 255, 255, 0.5)
+
+    .date
+      position: absolute
+      bottom: 0px
+      right: 0px
+      text-align: right
+      font-size: x-small
+      font-family: Ubuntu Mono
+      padding-right: 5px
+      color: rgba(255, 255, 255, 0.5)
 
 .alert-detail
   padding-left: 30px
@@ -52,6 +111,7 @@
       color: rgba(255, 255, 255, 0.5)
     .badge
       font-size: 100%
+      text-transform: capitalize
   hr
     border-top: 2px solid rgba(255, 255, 255, 0.2)
   .urls td
@@ -101,50 +161,3 @@
     font-weight: normal
     svg
       vertical-align: text-bottom
-
-.alert-box
-  overflow: hidden
-  word-wrap: break-word
-  position: relative
-  border-radius: 0
-  min-height: 96px
-  padding-left: 5px
-  padding-top: 5px
-  padding-bottom: 15px
-  .icon
-    color: rgba(255, 255, 255, 0.3)
-    position: absolute
-    top: 5px
-    right: 0px
-  .title
-    font-weight: bold
-    color: #fff
-    line-height: normal
-    font-size: medium
-  .target
-    color: #fff
-    line-height: normal
-    font-size: small
-    font-family: Ubuntu Mono
-  .detail
-    font-weight: normal
-    line-height: normal
-    font-family: Ubuntu Mono
-    color: rgba(255, 255, 255, 0.75)
-    font-size: small
-  .source
-    position: absolute
-    bottom: 0px
-    left: 0px
-    font-size: x-small
-    padding-left: 5px
-    color: rgba(255, 255, 255, 0.5)
-  .date
-    position: absolute
-    bottom: 0px
-    right: 0px
-    text-align: right
-    font-size: x-small
-    font-family: Ubuntu Mono
-    padding-right: 5px
-    color: rgba(255, 255, 255, 0.5)

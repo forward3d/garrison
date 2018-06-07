@@ -1,0 +1,145 @@
+.title
+  = alert.name
+  %span.id= alert.id
+%div
+  .rightbar
+    .header{:style => "margin-top: 0px"} Details
+    %table.table.table-striped.table-hover.table-sm
+      %tbody
+        - if alert.departments.any?
+          %tr
+            %td.key Department
+            %td.detail= alert.departments.map(&:name).join(', ')
+        - if alert.users.any?
+          %tr
+            %td.key Assigned
+            %td.detail= alert.users.map(&:name).join(', ')
+        - if alert.ticket
+          %tr
+            %td.key Ticket
+            %td.detail= alert.ticket
+
+    .header Detections
+    %table.table.table-striped.table-hover.table-sm
+      %tbody
+        %tr
+          %td.key Count
+          %td.detail= alert.count
+        %tr
+          %td.key First
+          %td.detail= alert.first_detected_at
+        - if alert.first_detected_at != alert.last_detected_at
+          %tr
+            %td.key Last
+            %td.detail= alert.last_detected_at
+
+    .header Dates
+    %table.table.table-striped.table-hover.table-sm
+      %tbody
+        %tr
+          %td.key Detected
+          %td.detail= alert.first_detected_at
+        - if alert.assigned_at
+          %tr
+            %td.key Assigned
+            %td.detail= alert.assigned_at
+        - if alert.resolved_at
+          %tr
+            %td.key Resolved
+            %td.detail= alert.resolved_at
+
+    - if alert.assigned_at or alert.resolved_at
+      .header Time Frames
+      %table.table.table-striped.table-hover.table-sm
+        %tbody
+          - if alert.assigned_at
+            %tr
+              %td.key Detected → Assigned
+              %td.detail= distance_of_time_in_words(alert.first_detected_at, alert.assigned_at)
+          - if alert.resolved_at
+            %tr
+              %td.key Detected → Resolved
+              %td.detail= distance_of_time_in_words(alert.first_detected_at, alert.resolved_at)
+
+    - if alert.key_values.any?
+      .header Key Value
+      %table.table.table-striped.table-hover.table-sm
+        %tbody
+          - alert.key_values.each do |kv|
+            %tr
+              %td.key= kv.key
+              %td.detail= kv.value
+
+    .header Tags
+    %table.table.table-striped.table-hover.table-sm
+      %tbody
+        %tr
+          %td.key Environment
+          %td.detail production
+
+  .row.basic
+    .col
+      .key Type
+      = alert.kind.name
+    .col
+      .key Family
+      = alert.family.name
+    .col
+      .key Source
+      %i{class: alert.source.icon}
+      = alert.source.name
+  .row.basic
+    .col
+      .key Status
+      %span.badge{class: "state-#{alert.state}"}= alert.state
+    .col
+      .key External Severity
+      %span.badge{style: "background: #{alert.severity_external.color}"}= alert.severity_external.name
+    .col
+      .key Internal Severity
+      %span.badge{style: "background: #{alert.severity_internal.color}"}= alert.severity_internal.name
+  .row.basic
+    .col
+      .key Finding ID
+      %pre
+        %code= alert.finding_id
+    - if alert.target
+      .col
+        .key Target
+        %pre
+          %code= alert.target
+    - if alert.detail
+      .col
+        .key Detail
+        %pre
+          %code= alert.detail
+
+  %hr/
+  %h5 Timeline
+  - alert.audits.each do |audit|
+    .row.timeline
+      .col-1.pip
+        %i{class: audit.icon || 'fas fa-dot-circle'}
+      .col.date= audit.created_at
+      .col.action= audit.kind
+      .col.detail= audit.action
+      .col.author= audit.author
+
+  - if alert.urls.any?
+    %hr/
+    %h5 URLs
+    %ul
+      - alert.urls.each do |url|
+        %li
+          = url.name
+          %small (#{link_to url.url, url.url})
+
+  - if alert.notes?
+    %hr/
+    %h5 Notes
+    %p= alert.notes
+
+  %hr/
+  %h5 Raw Finding
+  %pre
+    %code.raw= alert.finding
