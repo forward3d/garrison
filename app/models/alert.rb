@@ -26,6 +26,7 @@ class Alert < ApplicationRecord
   validates :source, presence: true
   validates :name, presence: true
   validates :finding, presence: true
+  validates :finding_id, presence: true
   validates :first_detected_at, presence: true
 
   after_create :touch_source_last_seen
