@@ -87,6 +87,8 @@ GEM
     erubi (1.7.1)
     execjs (2.7.0)
     ffi (1.9.25)
+    friendly_id (5.2.4)
+      activerecord (>= 4.0.0)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     haml (5.0.4)
@@ -212,6 +214,7 @@ DEPENDENCIES
   chromedriver-helper
   coffee-rails (~> 4.2)
   discard (~> 1.0)
+  friendly_id (~> 5.2, >= 5.2.4)
   haml (~> 5.0, >= 5.0.4)
   listen (>= 3.0.5, < 3.2)
   pg (>= 0.18, < 2.0)

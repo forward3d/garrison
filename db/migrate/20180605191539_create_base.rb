@@ -3,6 +3,7 @@ class CreateBase < ActiveRecord::Migration[5.2]
     enable_extension "pgcrypto"
 
     create_table :kinds, id: :uuid do |t|
+      t.string :slug, null: false
       t.string :name, null: false
       t.string :icon
       t.datetime :discarded_at, index: true
@@ -10,6 +11,7 @@ class CreateBase < ActiveRecord::Migration[5.2]
     end
 
     create_table :families, id: :uuid do |t|
+      t.string :slug, null: false
       t.string :name, null: false
       t.string :icon
       t.datetime :discarded_at, index: true
@@ -17,6 +19,7 @@ class CreateBase < ActiveRecord::Migration[5.2]
     end
 
     create_table :sources, id: :uuid do |t|
+      t.string :slug, null: false
       t.string :name, null: false
       t.string :icon
       t.datetime :last_seen_at
@@ -26,6 +29,7 @@ class CreateBase < ActiveRecord::Migration[5.2]
     end
 
     create_table :severities, id: :uuid do |t|
+      t.string :slug, null: false
       t.string :name, null: false
       t.integer :order, index: true, null: false
       t.string :color
@@ -34,12 +38,14 @@ class CreateBase < ActiveRecord::Migration[5.2]
     end
 
     create_table :departments, id: :uuid do |t|
+      t.string :slug, null: false
       t.string :name, null: false
       t.datetime :discarded_at, index: true
       t.timestamps
     end
 
     create_table :users, id: :uuid do |t|
+      t.string :slug, null: false
       t.string :name, null: false
       t.datetime :discarded_at, index: true
       t.timestamps

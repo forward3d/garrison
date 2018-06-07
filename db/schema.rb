@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_05_191539) do
+ActiveRecord::Schema.define(version: 2018_06_06_201903) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -80,6 +80,7 @@ ActiveRecord::Schema.define(version: 2018_06_05_191539) do
   end
 
   create_table "departments", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "slug", null: false
     t.string "name", null: false
     t.datetime "discarded_at"
     t.datetime "created_at", null: false
@@ -88,12 +89,25 @@ ActiveRecord::Schema.define(version: 2018_06_05_191539) do
   end
 
   create_table "families", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "slug", null: false
     t.string "name", null: false
     t.string "icon"
     t.datetime "discarded_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["discarded_at"], name: "index_families_on_discarded_at"
+  end
+
+  create_table "friendly_id_slugs", id: :serial, force: :cascade do |t|
+    t.string "slug", null: false
+    t.integer "sluggable_id", null: false
+    t.string "sluggable_type", limit: 50
+    t.string "scope"
+    t.datetime "created_at"
+    t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
+    t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
+    t.index ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
+    t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
   end
 
   create_table "key_values", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -108,6 +122,7 @@ ActiveRecord::Schema.define(version: 2018_06_05_191539) do
   end
 
   create_table "kinds", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "slug", null: false
     t.string "name", null: false
     t.string "icon"
     t.datetime "discarded_at"
@@ -117,6 +132,7 @@ ActiveRecord::Schema.define(version: 2018_06_05_191539) do
   end
 
   create_table "severities", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "slug", null: false
     t.string "name", null: false
     t.integer "order", null: false
     t.string "color"
@@ -128,6 +144,7 @@ ActiveRecord::Schema.define(version: 2018_06_05_191539) do
   end
 
   create_table "sources", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "slug", null: false
     t.string "name", null: false
     t.string "icon"
     t.datetime "last_seen_at"
@@ -150,6 +167,7 @@ ActiveRecord::Schema.define(version: 2018_06_05_191539) do
   end
 
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "slug", null: false
     t.string "name", null: false
     t.datetime "discarded_at"
     t.datetime "created_at", null: false
