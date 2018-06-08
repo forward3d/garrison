@@ -19,11 +19,11 @@ class Api::V1::AlertsController < Api::V1::BaseController
 
     alert_params[:urls].map do |url|
       alert.urls.find_or_initialize_by(name: url[:name], url: url[:url])
-    end
+    end if alert_params[:urls]
 
     alert_params[:key_values].map do |kv|
       alert.key_values.find_or_initialize_by(key: kv[:key], value: kv[:value])
-    end
+    end if alert_params[:key_values]
 
     alert.last_detected_at = alert_params[:detected_at]
     alert.finding = alert_params[:finding]
