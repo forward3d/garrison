@@ -40,27 +40,40 @@ class Alert < ApplicationRecord
     state :rejected
     state :resolved
 
-    event :verify do
+    event :verify, after: :set_verified_at do
       transitions from: [:unverified], to: :verified
     end
 
-    event :reject do
+    event :reject, after: :set_rejected_at do
       transitions from: [:verified, :unverified], to: :rejected
     end
 
-    event :resolve do
+    event :resolve, after: :set_resolved_at do
       transitions from: [:unverified, :verified], to: :resolved
     end
   end
 
   private
 
+  def set_rejected_at
+    update_attribute(:rejected_at, Time.now.utc)
+  end
+
+  def set_resolved_at
+    update_attribute(:resolved_at, Time.now.utc)
+  end
+
+  def set_verified_at
+    update_attribute(:verified_at, Time.now.utc)
+  end
+
   def log_create_event
     audits.create(kind: 'detected', action: 'Created Alert', icon: 'fas fa-exclamation-circle')
   end
 
   def log_status_change
-    audits.create(kind: 'status change', action: "Set to #{aasm.to_state}")
+    icon = 'fas fa-check-circle' if aasm.to_state == 'resolved'
+    audits.create(kind: 'status change', action: "Set to #{aasm.to_state}", icon: icon)
   end
 
   def touch_source_last_seen

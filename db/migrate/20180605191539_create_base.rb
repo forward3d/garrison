@@ -70,6 +70,7 @@ class CreateBase < ActiveRecord::Migration[5.2]
       t.datetime :last_detected_at
       t.datetime :assigned_at
       t.datetime :resolved_at
+      t.datetime :rejected_at
       t.datetime :discarded_at, index: true
       t.timestamps
     end

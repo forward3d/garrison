@@ -36,13 +36,14 @@
     .header Dates
     %table.table.table-striped.table-hover.table-sm
       %tbody
-        %tr
-          %td.key Detected
-          %td.detail= alert.first_detected_at
         - if alert.assigned_at
           %tr
             %td.key Assigned
             %td.detail= alert.assigned_at
+        - if alert.rejected_at
+          %tr
+            %td.key Rejected
+            %td.detail= alert.rejected_at
         - if alert.resolved_at
           %tr
             %td.key Resolved
@@ -116,14 +117,14 @@
 
   %hr/
   %h5 Timeline
-  - alert.audits.each do |audit|
+  - alert.audits.order('created_at desc').each do |audit|
     .row.timeline
       .col-1.pip
         %i{class: audit.icon || 'fas fa-dot-circle'}
       .col.date= audit.created_at
       .col.action= audit.kind
       .col.detail= audit.action
-      .col.author= audit.author
+      -# .col.author= audit.author
 
   - if alert.urls.any?
     %hr/

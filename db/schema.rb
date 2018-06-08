@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 2018_06_06_201903) do
     t.datetime "last_detected_at"
     t.datetime "assigned_at"
     t.datetime "resolved_at"
+    t.datetime "rejected_at"
     t.datetime "discarded_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
