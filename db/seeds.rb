@@ -40,19 +40,3 @@ department_operations =   Department.create(name: 'Operations')
 user_lloydpick = User.create(name: 'Lloyd Pick')
 
 source_aws_rds = Source.create(name: 'AWS RDS', icon: 'fab fa-amazon')
-
-Alert.create!(
-  name: 'Test Alert',
-  finding: { some: 'data' }.to_json,
-  finding_id: 'abcdef012345',
-  kind: kind_compliance,
-  family: family_infrastructure,
-  severity_internal: severity_medium,
-  severity_external: severity_critical,
-  departments: [department_operations],
-  users: [user_lloydpick],
-  source: source_aws_rds,
-  first_detected_at: Time.now.utc,
-  urls: [Url.new(name: 'AWS Dashboard', url: 'https://docs.aws.amazon.com/lambda/latest/dg/current-supported-versions.html')],
-  key_values: [KeyValue.new(key: 'region', value: 'eu-west-1')]
-)
