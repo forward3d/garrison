@@ -6,18 +6,15 @@
     .header{:style => "margin-top: 0px"} Details
     %table.table.table-striped.table-hover.table-sm
       %tbody
-        - if alert.departments.any?
-          %tr
-            %td.key Department
-            %td.detail= alert.departments.map(&:name).join(', ')
-        - if alert.users.any?
-          %tr
-            %td.key Assigned
-            %td.detail= alert.users.map(&:name).join(', ')
-        - if alert.ticket
-          %tr
-            %td.key Ticket
-            %td.detail= alert.ticket
+        %tr
+          %td.key Department
+          %td.detail= editable(alert, :departments, :name)
+        %tr
+          %td.key Assigned
+          %td.detail= editable(alert, :users, :name)
+        %tr
+          %td.key Ticket
+          %td.detail= editable(alert, :ticket)
 
     .header Detections
     %table.table.table-striped.table-hover.table-sm
@@ -48,6 +45,12 @@
           %tr
             %td.key Resolved
             %td.detail= alert.resolved_at
+        %tr
+          %td.key Created
+          %td.detail= alert.created_at
+        %tr
+          %td.key Updated
+          %td.detail= alert.updated_at
 
     - if alert.assigned_at or alert.resolved_at
       .header Time Frames
@@ -71,20 +74,13 @@
               %td.key= kv.key
               %td.detail= kv.value
 
-    .header Tags
-    %table.table.table-striped.table-hover.table-sm
-      %tbody
-        %tr
-          %td.key Environment
-          %td.detail production
-
   .row.basic
     .col
       .key Type
-      = alert.kind.name
+      = editable(alert, :kind, :name)
     .col
       .key Family
-      = alert.family.name
+      = editable(alert, :family, :name)
     .col
       .key Source
       %i{class: alert.source.icon}

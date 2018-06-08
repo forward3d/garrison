@@ -1,0 +1,63 @@
+%div{id: "alert-#{@alert.id}"}
+= form_for(@alert, remote: true, data: { type: :json }, html: { class: 'form-inline' }) do |f|
+
+  - if params[:field] == 'ticket'
+    .form-group.mr-2
+      = f.text_field :ticket, class: 'form-control form-control-sm'
+
+  - elsif params[:field] == 'kind'
+    .form-group.mr-2
+      = f.collection_select :kind_id, Kind.kept.all, :id, :name, {}, class: 'form-control form-control-sm'
+
+  - elsif params[:field] == 'family'
+    .form-group.mr-2
+      = f.collection_select :family_id, Family.kept.all, :id, :name, {}, class: 'form-control form-control-sm'
+
+  - elsif params[:field] == 'departments'
+    .form-group.mr-2
+      = f.collection_select :department_ids, Department.kept.all, :id, :name, { include_blank: '' }, :multiple => true, class: 'form-control form-control-sm'
+
+  - elsif params[:field] == 'users'
+    .form-group.mr-2
+      = f.collection_select :user_ids, User.kept.all, :id, :name, { include_blank: '' }, :multiple => true, class: 'form-control form-control-sm'
+
+  = f.button class: 'btn btn-sm btn-warning', data: { disable_with: "<i class='fas fa-spinner fa-spin'></i>" } do
+    %i.fas.fa-edit
+
+:javascript
+  $(document).ready(function(){
+    $('#edit_alert_#{@alert.id}').on('ajax:success', function(event) {
+      var popover = $('.popover')
+      var detail = event.detail;
+      var data = detail[0], status = detail[1],  xhr = detail[2];
+
+      setTimeout(function(){
+        $('#edit_alert_#{@alert.id} button').removeClass("btn-warning").addClass("btn-success");
+        $('#edit_alert_#{@alert.id} button').html('<i class="fas fa-check"></i>');
+        $('#edit_alert_#{@alert.id} button').prop('disabled', true);
+        text = jmespath.search(data, popover.data('path'))
+        if ($.isArray(text)) {
+          text = text.join(', ');
+        }
+
+        if (text == "") {
+          $('*[data-id="'+ popover.data('id') +'"]').text('Empty')
+          $('*[data-id="'+ popover.data('id') +'"]').addClass('editable-empty')
+        } else {
+          $('*[data-id="'+ popover.data('id') +'"]').text(text);
+          $('*[data-id="'+ popover.data('id') +'"]').removeClass('editable-empty')
+        }
+      }, 0);
+
+      setTimeout(function(){
+        popover.popover('hide');
+      }, 1000);
+
+    }).on('ajax:error',function(e, xhr, status, error){
+      setTimeout(function(){
+        $('#edit_alert_#{@alert.id} button').removeClass("btn-warning").addClass("btn-danger");
+        $('#edit_alert_#{@alert.id} button').html('<i class="fas fa-times"></i>');
+        $('#edit_alert_#{@alert.id} button').prop('disabled', true);
+      }, 0);
+    });
+  });
