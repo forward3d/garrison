@@ -31,6 +31,7 @@ class Api::V1::AlertsController < Api::V1::BaseController
 
     if alert.persisted?
       alert.count += 1
+      alert.audits.build(kind: 'detected', action: 'Repeat Alert', icon: 'fas fa-exclamation-circle')
     else
       alert.name = alert_params[:name]
       alert.detail = alert_params[:detail]
@@ -40,8 +41,6 @@ class Api::V1::AlertsController < Api::V1::BaseController
       alert.family = Family.friendly.find(alert_params[:family])
       alert.severity_internal = Severity.friendly.find(alert_params[:severity])
     end
-
-    puts alert.inspect
 
     alert.save!
     render json: alert, serializer: Api::V1::AlertSerializer
