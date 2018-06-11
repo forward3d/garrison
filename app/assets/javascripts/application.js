@@ -28,6 +28,8 @@
 
 document.addEventListener('turbolinks:load', function() {
 
+  FontAwesome.dom.i2svg()
+
   $(document).on('click', function(e) {
     $('[data-toggle="popover"]').each(function() {
       if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
