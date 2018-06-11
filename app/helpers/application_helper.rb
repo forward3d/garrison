@@ -28,7 +28,7 @@ module ApplicationHelper
       data: {
         toggle: 'popover',
         uuid: obj.id,
-        id: SecureRandom.uuid,
+        element: SecureRandom.alphanumeric,
         field: field.to_s,
         path: path.compact.join('.')
       }

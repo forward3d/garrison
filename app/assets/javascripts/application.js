@@ -25,7 +25,7 @@
 //= require jmespath/jmespath
 //= require_tree .
 
-$(document).ready(function() {
+document.addEventListener('turbolinks:load', function() {
 
   $(document).on('click', function(e) {
     $('[data-toggle="popover"]').each(function() {
@@ -35,33 +35,72 @@ $(document).ready(function() {
     });
   });
 
-  $(".editable").each(function() {
-    var popover = $(this).popover({
-      container: 'body',
-      html: true,
-      content: 'Loading...'
-    }).on('show.bs.popover', function () {
-      setTimeout(function(){
-        $('.popover').data('id', popover.data('id'));
-        $('.popover').data('path', popover.data('path'));
-      }, 0);
+  $('body').popover({
+    container: 'body',
+    html: true,
+    selector: 'a.editable',
+    content: 'Loading...'
+  })
 
-      $.ajax({
-        dataType: 'html',
-        cache: false,
-        url: '/alerts/' + popover.data('uuid') + '/edit?field=' + popover.data('field'),
-        success: function (html) {
-          $('.popover-body').html(html);
-          $('.popover-body').find('.form-control').focus();
+  $('body').on('show.bs.popover', 'a.editable', function() {
+    var popover = $(this).data('bs.popover')
+    $(popover.tip).data('element', $(this).data('element'))
 
-          // bootstrap popovers really don't like dynamic content, this is to
-          // make sure it ends up in the right place
-          setTimeout(function(){
-            $('.popover').popover('update');
-          }, 0);
-        }
-      });
+    $.ajax({
+      dataType: 'html',
+      cache: false,
+      url: '/alerts/' + $(this).data('uuid') + '/edit?field=' + $(this).data('field'),
+      success: function (html) {
+        $(popover.tip).find('.popover-body').html(html);
+        $(popover.tip).find('.form-control').focus();
+
+        // bootstrap popovers really don't like dynamic content, this is to
+        // make sure it ends up in the right place
+        setTimeout(function(){
+          popover._popper.scheduleUpdate()
+        }, 0);
+      }
     });
+  });
+
+  $('body').on('ajax:error', 'form.editable', function(event) {
+    var popover = $(this).closest('.popover')
+
+    setTimeout(function(){
+      popover.find('button').removeClass("btn-warning").addClass("btn-danger");
+      popover.find('button').html('<i class="fas fa-times"></i>');
+      popover.find('button').prop('disabled', true);
+    }, 0);
+  })
+
+  $('body').on('ajax:success', 'form.editable', function(event) {
+    var popover = $(this).closest('.popover')
+    var editable = $('a.editable[data-element="' + popover.data('element') + '"]')
+    var detail = event.detail;
+    var data = detail[0], status = detail[1], xhr = detail[2];
+
+    setTimeout(function(){
+      popover.find('button').removeClass("btn-warning").addClass("btn-success");
+      popover.find('button').html('<i class="fas fa-check"></i>');
+      popover.find('button').prop('disabled', true);
+
+      text = jmespath.search(data, editable.data('path'))
+      if ($.isArray(text)) {
+        text = text.join(', ');
+      }
+
+      if (text == "") {
+        editable.text('Empty')
+        editable.addClass('editable-empty')
+      } else {
+        editable.text(text);
+        editable.removeClass('editable-empty')
+      }
+    }, 0);
+
+    setTimeout(function(){
+      popover.popover('hide');
+    }, 1000);
   });
 
 })
