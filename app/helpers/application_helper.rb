@@ -1,5 +1,20 @@
 module ApplicationHelper
 
+  def filter(klass, field, objects, submitted, display, selected)
+    select_tag(
+      "#{klass}[#{field}][]",
+      options_for_select(
+        objects.map { |o| [o.send(display), o.send(submitted)] },
+        selected
+      ),
+      multiple: true,
+      class: 'selectpicker',
+      'data-actions-box': 'true',
+      'data-live-search': 'true',
+      'data-width': '100%'
+    )
+  end
+
   def editable(obj, field, detail = nil)
     path = []
     initial = obj.send(field)

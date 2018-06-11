@@ -53,6 +53,14 @@ class Alert < ApplicationRecord
     end
   end
 
+  scope :state, ->(state) { where('state IN (?)', state) }
+  scope :kind, ->(kind) { joins(:kind).where('kinds.slug IN (?)', kind) }
+  scope :family, ->(family) { joins(:family).where('families.slug IN (?)', family) }
+  scope :severity, ->(severity) { joins(:severity_internal).where('severities.slug IN (?)', severity) }
+  scope :source, ->(source) { joins(:source).where('sources.slug IN (?)', source) }
+  scope :department, ->(department) { joins(:departments).where('departments.slug IN (?)', department) }
+  scope :user, ->(user) { joins(:users).where('users.slug IN (?)', user) }
+
   private
 
   def set_rejected_at

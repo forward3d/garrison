@@ -1,5 +1,50 @@
 .row
   .alerts.col-3.col-sm-5.col-md-4.col-lg-3.col-xl-3{style: ''}
+    .filter-box
+      %button.filter.btn.btn-sm.btn-secondary{"aria-controls" => "collapse", "aria-expanded" => "false", "data-target" => "#collapse", "data-toggle" => "collapse", :type => "button"}
+        %i.fa-fw.fas.fa-filter
+      .title Filters
+      #collapse.collapse
+        = form_tag alerts_path, method: :get do
+          .form-group.row
+            %label.col-sm-2.col-form-label{:for => "alert_states"} State
+            .col
+              = filter(:alert, :states, Alert.aasm.states, :name, :name, @filter_params.nil? ? [] : @filter_params[:states])
+
+          .form-group.row
+            %label.col-sm-2.col-form-label{:for => "alert_severities_"} Severity
+            .col
+              = filter(:alert, :severities, Severity.kept.all.order(order: :desc), :slug, :name, @filter_params.nil? ? [] : @filter_params[:severities])
+
+          .form-group.row
+            %label.col-sm-2.col-form-label{:for => "alert_kinds_"} Kind
+            .col
+              = filter(:alert, :kinds, Kind.kept.all.order(:name), :slug, :name, @filter_params.nil? ? [] : @filter_params[:kinds])
+
+          .form-group.row
+            %label.col-sm-2.col-form-label{:for => "alert_families_"} Family
+            .col
+              = filter(:alert, :families, Family.kept.all.order(:name), :slug, :name, @filter_params.nil? ? [] : @filter_params[:families])
+
+          .form-group.row
+            %label.col-sm-2.col-form-label{:for => "alert_sources_"} Source
+            .col
+              = filter(:alert, :sources, Source.kept.all.order(:name), :slug, :name, @filter_params.nil? ? [] : @filter_params[:sources])
+
+          .form-group.row
+            %label.col-sm-2.col-form-label{:for => "alert_departments_"} Dept
+            .col
+              = filter(:alert, :departments, Department.kept.all.order(:name), :slug, :name, @filter_params.nil? ? [] : @filter_params[:departments])
+
+          .form-group.row
+            %label.col-sm-2.col-form-label{:for => "alert_users_"} User
+            .col
+              = filter(:alert, :users, User.kept.all.order(:name), :slug, :name, @filter_params.nil? ? [] : @filter_params[:users])
+
+          .form-group.row
+            .col
+              = button_tag 'Apply Filters', class: 'btn btn-sm btn-primary filter-submit'
+
     - @alerts.each do |alert|
       = link_to alert_path(alert), class: 'alert-box', style: "background-color: #{alert.severity_internal.color}", remote: true do
         .icons

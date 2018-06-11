@@ -17,6 +17,7 @@
 //= require moment/moment
 //= require popper.js/dist/umd/popper
 //= require bootstrap/dist/js/bootstrap
+//= require bootstrap-select/dist/js/bootstrap-select
 //= require @fortawesome/fontawesome
 //= require @fortawesome/fontawesome-free-regular
 //= require @fortawesome/fontawesome-free-solid

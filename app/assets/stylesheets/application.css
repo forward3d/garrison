@@ -11,6 +11,7 @@
  * It is generally better to create a new file per style scope.
  *
  *= require bootstrap/dist/css/bootstrap
+ *= require bootstrap-select/dist/css/bootstrap-select
  *= require_tree .
  *= require_self
  */
