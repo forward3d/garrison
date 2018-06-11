@@ -2,7 +2,10 @@
   .alerts.col-3.col-sm-5.col-md-4.col-lg-3.col-xl-3{style: ''}
     - @alerts.each do |alert|
       = link_to alert_path(alert), class: 'alert-box', style: "background-color: #{alert.severity_internal.color}", remote: true do
-        .icon
+        .icons
+          %i.fa-fw{title: alert.kind.name, class: alert.kind.icon}
+          %i.fa-fw{title: alert.family.name, class: alert.family.icon}
+        .source-icon
           %i.fa-fw.fa-5x{class: alert.source.icon}
         .title= alert.name
         .target= alert.target
