@@ -28,6 +28,12 @@
 
 document.addEventListener('turbolinks:load', function() {
 
+  $('.selectpicker').each(function (i, el) {
+    if (!$(el).parent().hasClass('bootstrap-select')) {
+      $(el).selectpicker('refresh');
+    }
+  });
+
   FontAwesome.dom.i2svg()
 
   $(document).on('click', function(e) {
