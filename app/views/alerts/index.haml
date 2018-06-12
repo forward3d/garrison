@@ -69,7 +69,9 @@
             %span.fa-layers.fa-fw
               %i.fas.fa-circle.state-resolved
               %i.fas.fa-flag-checkered{title: 'Resolved', "data-fa-transform" => "shrink-6"}
-          = alert.name
+          #{alert.name}
+          - if alert.count > 1
+            %small x#{alert.count}
         .target= alert.target
         .detail= alert.detail
         .source= alert.source.name
