@@ -127,4 +127,12 @@ document.addEventListener('turbolinks:load', function() {
     }, 1000);
   });
 
+  $('body').on('ajax:success', 'a.state', function(event) {
+    var detail = event.detail;
+    var data = detail[0], status = detail[1], xhr = detail[2];
+
+    $('a.state').removeClass('flash')
+    $('a.state-' + data["state"] + '-bg').addClass('flash')
+  });
+
 })

@@ -1,5 +1,7 @@
 class AlertsController < ApplicationController
 
+  before_action :find_alert, only: %i[show edit update unverify verify reject resolve]
+
   def index
     @alerts = Alert.kept.includes(:severity_internal)
 
@@ -27,7 +29,6 @@ class AlertsController < ApplicationController
   end
 
   def show
-    @alert = Alert.kept.find(params[:id])
     respond_to do |format|
       format.html
       format.js { render layout: false }
@@ -35,15 +36,12 @@ class AlertsController < ApplicationController
   end
 
   def edit
-    @alert = Alert.kept.find(params[:id])
-
     respond_to do |format|
       format.js { render layout: false }
     end
   end
 
   def update
-    @alert = Alert.kept.find(params[:id])
     if @alert.update_attributes(alert_params)
       respond_to do |format|
         format.html { redirect_to alert_url }
@@ -57,7 +55,43 @@ class AlertsController < ApplicationController
     end
   end
 
+  def unverify
+    @alert.unverify!
+    respond_to do |format|
+      format.html { redirect_to alert_url }
+      format.json { render json: @alert, status: :created, serializer: Api::V1::AlertSerializer }
+    end
+  end
+
+  def verify
+    @alert.verify!
+    respond_to do |format|
+      format.html { redirect_to alert_url }
+      format.json { render json: @alert, status: :created, serializer: Api::V1::AlertSerializer }
+    end
+  end
+
+  def reject
+    @alert.reject!
+    respond_to do |format|
+      format.html { redirect_to alert_url }
+      format.json { render json: @alert, status: :created, serializer: Api::V1::AlertSerializer }
+    end
+  end
+
+  def resolve
+    @alert.resolve!
+    respond_to do |format|
+      format.html { redirect_to alert_url }
+      format.json { render json: @alert, status: :created, serializer: Api::V1::AlertSerializer }
+    end
+  end
+
   private
+
+  def find_alert
+    @alert = Alert.kept.find(params[:id])
+  end
 
   def alert_params
     params.require(:alert).permit(

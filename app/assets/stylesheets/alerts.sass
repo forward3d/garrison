@@ -126,6 +126,19 @@
 
 .alert-detail
   padding-left: 30px
+
+  span.state
+    opacity: 0.25
+
+  a.state
+    cursor: pointer
+    color: white
+    transition: all .2s ease-in-out
+
+    &:hover
+      transform: scale(1.1)
+      text-decoration: none
+
   .timeline
     text-align: center
     .date

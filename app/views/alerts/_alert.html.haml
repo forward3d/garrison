@@ -56,7 +56,7 @@
           %td.key Updated
           %td.detail= alert.updated_at
 
-    - if alert.assigned_at or alert.resolved_at
+    - if alert.assigned_at or not alert.unverified?
       .header Time Frames
       %table.table.table-striped.table-hover.table-sm
         %tbody
@@ -68,6 +68,10 @@
             %tr
               %td.key Detected → Verified
               %td.detail= distance_of_time_in_words(alert.first_detected_at, alert.verified_at)
+          - if alert.rejected_at
+            %tr
+              %td.key Detected → Rejected
+              %td.detail= distance_of_time_in_words(alert.first_detected_at, alert.rejected_at)
           - if alert.resolved_at
             %tr
               %td.key Detected → Resolved
@@ -99,9 +103,6 @@
       = alert.source.name
   .row.basic
     .col
-      .key Status
-      %span.badge{class: "state-#{alert.state}"}= alert.state
-    .col
       .key External Severity
       %span.badge{style: "background: #{alert.severity_external.color}"}= alert.severity_external.name
     .col
@@ -124,15 +125,67 @@
           %code= alert.detail
 
   %hr/
-  %h5 Timeline
-  - alert.audits.order('created_at desc').each do |audit|
-    .row.timeline
-      .col-1.pip
-        %i{class: audit.icon || 'fas fa-dot-circle'}
-      .col.date= audit.created_at
-      .col.action= audit.kind
-      .col.detail= audit.action
-      -# .col.author= audit.author
+
+  .row.basic
+    .col
+      - if alert.unverified?
+        %a.badge{class: "state state-unverified-bg flash"}
+          %i.fa-fw.fas.fa-question
+          Unverified
+      - elsif alert.may_unverify?
+        = link_to unverify_alert_path(alert), remote: true, data: { type: :json }, method: :post, class: 'badge state state-unverified-bg' do
+          %i.fa-fw.fas.fa-question
+          Unverified
+      - else
+        %span.badge{class: "state state-unverified-bg"}
+          %i.fa-fw.fas.fa-question
+          Unverified
+
+    .col-1
+      %i.fas.fa-exchange-alt
+
+    .col
+      - if alert.verified?
+        %a.badge{class: "state state-verified-bg flash"}
+          %i.fa-fw.far.fa-eye
+          Verified
+      - elsif alert.may_verify?
+        = link_to verify_alert_path(alert), remote: true, data: { type: :json }, method: :post, class: 'badge state state-verified-bg' do
+          %i.fa-fw.far.fa-eye
+          Verified
+      - else
+        %span.badge{class: "state state-verified-bg"}
+          %i.fa-fw.far.fa-eye
+          Verified
+
+    .col-1
+      %i.fas.fa-long-arrow-alt-right
+    .col
+      - if alert.rejected?
+        %a.badge{class: "state state-rejected-bg flash"}
+          %i.fa-fw.fas.fa-skull
+          Rejected
+      - elsif alert.may_reject?
+        = link_to reject_alert_path(alert), remote: true, data: { type: :json }, method: :post, class: 'badge state state-rejected-bg' do
+          %i.fa-fw.fas.fa-skull
+          Rejected
+      - else
+        %span.badge{class: "state state-rejected-bg"}
+          %i.fa-fw.fas.fa-skull
+          Rejected
+
+      - if alert.resolved?
+        %a.badge{class: "state state-resolved-bg flash"}
+          %i.fa-fw.fas.fa-flag-checkered
+          Resolved
+      - elsif alert.may_resolve?
+        = link_to resolve_alert_path(alert), remote: true, data: { type: :json }, method: :post, class: 'badge state state-resolved-bg' do
+          %i.fa-fw.fas.fa-flag-checkered
+          Resolved
+      - else
+        %span.badge{class: "state state-resolved-bg"}
+          %i.fa-fw.fas.fa-flag-checkered
+          Resolved
 
   - if alert.urls.any?
     %hr/
@@ -152,3 +205,14 @@
   %h5 Raw Finding
   %pre
     %code.raw= alert.finding
+
+  %hr/
+  %h5 Timeline
+  - alert.audits.order('created_at desc').each do |audit|
+    .row.timeline
+      .col-1.pip
+        %i{class: audit.icon || 'fas fa-dot-circle'}
+      .col.date= audit.created_at
+      .col.action= audit.kind
+      .col.detail= audit.action
+      -# .col.author= audit.author

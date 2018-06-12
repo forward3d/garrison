@@ -19,16 +19,18 @@ footer p
   font-family: Raleway
   font-size: x-small
 
-.editable
+a.editable
   text-decoration: underline
   text-decoration-style: dotted
   text-decoration-color: rgba(255, 255, 255, 0.2)
   cursor: pointer
+  transition: all .2s ease-in-out
 
   &.badge
     color: white
 
   &:hover
+    transform: scale(1.1)
     text-decoration-style: dotted
 
 .editable-empty

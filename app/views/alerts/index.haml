@@ -52,7 +52,24 @@
           %i.fa-fw{title: alert.family.name, class: alert.family.icon}
         .source-icon
           %i.fa-fw.fa-5x{class: alert.source.icon}
-        .title= alert.name
+        .title
+          - if alert.unverified?
+            %span.fa-layers.fa-fw
+              %i.fas.fa-circle.state-unverified
+              %i.fas.fa-question{title: 'Unverified', "data-fa-transform" => "shrink-6"}
+          - if alert.verified?
+            %span.fa-layers.fa-fw
+              %i.fas.fa-circle.state-verified
+              %i.far.fa-eye{title: 'Verified', "data-fa-transform" => "shrink-6"}
+          - if alert.rejected?
+            %span.fa-layers.fa-fw
+              %i.fas.fa-circle.state-rejected
+              %i.fas.fa-skull{title: 'Rejected', "data-fa-transform" => "shrink-6"}
+          - if alert.resolved?
+            %span.fa-layers.fa-fw
+              %i.fas.fa-circle.state-resolved
+              %i.fas.fa-flag-checkered{title: 'Resolved', "data-fa-transform" => "shrink-6"}
+          = alert.name
         .target= alert.target
         .detail= alert.detail
         .source= alert.source.name
