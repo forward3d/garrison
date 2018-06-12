@@ -194,7 +194,7 @@
       - alert.urls.each do |url|
         %li
           = url.name
-          %small (#{link_to url.url, url.url})
+          %small (#{link_to url.url, url.url, target: '_blank'})
 
   - if alert.notes?
     %hr/
