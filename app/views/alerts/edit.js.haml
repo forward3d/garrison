@@ -20,5 +20,9 @@
     .form-group.mr-2
       = f.collection_select :user_ids, User.kept.all, :id, :name, { include_blank: '' }, :multiple => true, class: 'form-control form-control-sm'
 
+  - elsif params[:field] == 'severity_internal'
+    .form-group.mr-2
+      = f.collection_select :severity_internal_id, Severity.kept.all, :id, :name, {}, class: 'form-control form-control-sm'
+
   = f.button class: 'btn btn-sm btn-warning', data: { disable_with: "<i class='fas fa-spinner fa-spin'></i>" } do
     %i.fas.fa-edit

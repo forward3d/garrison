@@ -64,7 +64,7 @@ class AlertsController < ApplicationController
       :notes,
       :kind_id,
       :family_id,
-      :severity_internal,
+      :severity_internal_id,
       :ticket,
       department_ids: [],
       user_ids: []

@@ -15,7 +15,7 @@ module ApplicationHelper
     )
   end
 
-  def editable(obj, field, detail = nil)
+  def editable(obj, field, detail = nil, options = {})
     path = []
     initial = obj.send(field)
 
@@ -34,11 +34,13 @@ module ApplicationHelper
 
     css = ['editable']
     css << 'editable-empty' if initial.blank?
+    css << 'badge' if field == :severity_internal
 
     content_tag(
       :a,
       initial.blank? ? 'Empty' : initial,
       class: css.join(' '),
+      style: options[:style],
       tabindex: 0,
       data: {
         toggle: 'popover',

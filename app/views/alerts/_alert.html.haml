@@ -94,7 +94,7 @@
       %span.badge{style: "background: #{alert.severity_external.color}"}= alert.severity_external.name
     .col
       .key Internal Severity
-      %span.badge{style: "background: #{alert.severity_internal.color}"}= alert.severity_internal.name
+      = editable(alert, :severity_internal, :name, style: "background: #{alert.severity_internal.color}")
   .row.basic
     .col
       .key Finding ID

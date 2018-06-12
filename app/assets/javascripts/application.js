@@ -115,6 +115,11 @@ document.addEventListener('turbolinks:load', function() {
         editable.text(text);
         editable.removeClass('editable-empty');
       }
+
+      if (editable.data('field') == 'severity_internal') {
+        color = jmespath.search(data, 'severity_internal.color');
+        editable.css({backgroundColor: color});
+      }
     }, 0);
 
     setTimeout(function(){
