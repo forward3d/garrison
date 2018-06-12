@@ -40,6 +40,10 @@ class Alert < ApplicationRecord
     state :rejected
     state :resolved
 
+    event :unverify do
+      transitions from: [:verified], to: :unverified
+    end
+
     event :verify, after: :set_verified_at do
       transitions from: [:unverified], to: :verified
     end
@@ -76,7 +80,7 @@ class Alert < ApplicationRecord
   end
 
   def log_create_event
-    audits.create(kind: 'detected', action: 'Created Alert', icon: 'fas fa-exclamation-circle')
+    audits.create(created_at: first_detected_at, kind: 'detected', action: 'Created Alert', icon: 'fas fa-exclamation-circle')
   end
 
   def log_status_change
