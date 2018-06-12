@@ -4,7 +4,7 @@
       %a.nav-link.logo{href: "/"}
         %i.fas.fa-chess-rook.fa-fw{alt: "Garrison Logo", style: "font-size:2.5em;", title: "Garrison"}
 
-      .divider Kind
+      .divider Type
       - Kind.kept.all.each do |kind|
         = link_to alerts_path(alert: { kinds: [kind.slug], states: ['unverified', 'verified'] }), title: kind.name, class: 'nav-link' do
           %span.fa-layers.fa-fw{style: "font-size: 2.5em"}
