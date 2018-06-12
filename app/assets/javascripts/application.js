@@ -34,7 +34,11 @@ document.addEventListener('turbolinks:load', function() {
     }
   });
 
-  FontAwesome.dom.i2svg()
+  // fontawesome turbolinks support
+  FontAwesome.dom.i2svg();
+  $('body').on('ajax:success', function(event) {
+    FontAwesome.dom.i2svg();
+  })
 
   $(document).on('click', function(e) {
     $('[data-toggle="popover"]').each(function() {
