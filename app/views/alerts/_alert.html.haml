@@ -204,7 +204,7 @@
   %hr/
   %h5 Raw Finding
   %pre
-    %code.raw= alert.finding
+    %code.raw= JSON.pretty_generate(JSON.parse(alert.finding))
 
   %hr/
   %h5 Timeline
