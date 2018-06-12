@@ -3,16 +3,25 @@
     %nav.nav
       %a.nav-link.logo{href: "/"}
         %i.fas.fa-chess-rook.fa-fw{alt: "Garrison Logo", style: "font-size:2.5em;", title: "Garrison"}
+
+      .divider Kind
       - Kind.kept.all.each do |kind|
         = link_to alerts_path(alert: { kinds: [kind.slug] }), title: kind.name, class: 'nav-link' do
           %span.fa-layers.fa-fw{style: "font-size: 2.5em"}
             %i.fa-fw{class: kind.icon}
-            %span.fa-layers-counter= kind.alerts.count
+            - if kind.alerts.state(:unverified).count > 0
+              %span.fa-layers-counter{title: 'Unverified'}= kind.alerts.state(:unverified).count
+            - if kind.alerts.state(:verified).count > 0
+              %span.fa-layers-counter{title: 'Verified'}= kind.alerts.state(:verified).count
+      .divider Family
       - Family.kept.all.each do |family|
         = link_to alerts_path(alert: { families: [family.slug] }), title: family.name, class: 'nav-link' do
           %span.fa-layers.fa-fw{style: "font-size: 2.5em"}
             %i.fa-fw{class: family.icon}
-            %span.fa-layers-counter= family.alerts.count
+            - if family.alerts.state(:unverified).count > 0
+              %span.fa-layers-counter{title: 'Unverified'}= family.alerts.state(:unverified).count
+            - if family.alerts.state(:verified).count > 0
+              %span.fa-layers-counter{title: 'Verified', style: 'top: 16px'}= family.alerts.state(:verified).count
   .bottom
     %nav.nav
       .dropup
