@@ -37,6 +37,10 @@
           %tr
             %td.key Assigned
             %td.detail= alert.assigned_at
+        - if alert.verified_at
+          %tr
+            %td.key Verified
+            %td.detail= alert.verified_at
         - if alert.rejected_at
           %tr
             %td.key Rejected
@@ -60,10 +64,18 @@
             %tr
               %td.key Detected → Assigned
               %td.detail= distance_of_time_in_words(alert.first_detected_at, alert.assigned_at)
+          - if alert.verified_at
+            %tr
+              %td.key Detected → Verified
+              %td.detail= distance_of_time_in_words(alert.first_detected_at, alert.verified_at)
           - if alert.resolved_at
             %tr
               %td.key Detected → Resolved
               %td.detail= distance_of_time_in_words(alert.first_detected_at, alert.resolved_at)
+            - if alert.verified_at
+              %tr
+                %td.key Verified → Resolved
+                %td.detail= distance_of_time_in_words(alert.verified_at, alert.resolved_at)
 
     - if alert.key_values.any?
       .header Key Value
