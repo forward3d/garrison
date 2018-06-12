@@ -16,6 +16,6 @@
         .content.col.col-offset-sidebar
           = yield
           %footer
-            %p
-              %i.fas.fa-fw.fa-code-branch
-              = `git rev-parse --short HEAD`.chomp
+            = link_to 'https://github.com/forward3d/garrison', target: '_blank' do
+              %i.fab.fa-fw.fa-github
+              Garrison

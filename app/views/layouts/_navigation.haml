@@ -23,20 +23,23 @@
             - if family.alerts.state(:verified).count > 0
               %span.fa-layers-counter{title: 'Verified', style: 'top: 16px'}= family.alerts.state(:verified).count
   .bottom
-    %nav.nav
-      .dropup
-        %a.nav-link{"data-toggle" => "dropdown", href: "", title: "Profile"}
-          %i.fas.fa-user-shield{style: "font-size: 2.5em"}
-        .dropdown-menu
-          %h6.dropdown-header Lloyd
-          .dropdown-divider
-          %a.dropdown-item{href: "/profile"}
-            %i.far.fa-fw.fa-user
-            Your Profile
-          %a.dropdown-item{href: "/users/edit"}
-            %i.fas.fa-shield-alt
-            Security Settings
-          .dropdown-divider
-          %a.dropdown-item{"data-method" => "delete", href: "/sign_out", rel: "nofollow"}
-            %i.fas.fa-sign-out-alt
-            Sign Out
+    .version
+      %i.fas.fa-fw.fa-code-branch
+      = `git rev-parse --short HEAD`.chomp
+  -#   %nav.nav
+  -#     .dropup
+  -#       %a.nav-link{"data-toggle" => "dropdown", href: "", title: "Profile"}
+  -#         %i.fas.fa-user-shield{style: "font-size: 2.5em"}
+  -#       .dropdown-menu
+  -#         %h6.dropdown-header Lloyd
+  -#         .dropdown-divider
+  -#         %a.dropdown-item{href: "/profile"}
+  -#           %i.far.fa-fw.fa-user
+  -#           Your Profile
+  -#         %a.dropdown-item{href: "/users/edit"}
+  -#           %i.fas.fa-shield-alt
+  -#           Security Settings
+  -#         .dropdown-divider
+  -#         %a.dropdown-item{"data-method" => "delete", href: "/sign_out", rel: "nofollow"}
+  -#           %i.fas.fa-sign-out-alt
+  -#           Sign Out
