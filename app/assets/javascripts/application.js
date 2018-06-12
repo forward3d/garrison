@@ -28,6 +28,7 @@
 
 document.addEventListener('turbolinks:load', function() {
 
+  // bootstrap-select turbolinks support
   $('.selectpicker').each(function (i, el) {
     if (!$(el).parent().hasClass('bootstrap-select')) {
       $(el).selectpicker('refresh');
@@ -40,6 +41,7 @@ document.addEventListener('turbolinks:load', function() {
     FontAwesome.dom.i2svg();
   })
 
+  // close all other popovers when another one is opened
   $(document).on('click', function(e) {
     $('[data-toggle="popover"]').each(function() {
       if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
@@ -48,6 +50,7 @@ document.addEventListener('turbolinks:load', function() {
     });
   });
 
+  // in-place editing
   $('body').popover({
     container: 'body',
     html: true,
