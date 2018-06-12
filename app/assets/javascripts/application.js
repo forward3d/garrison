@@ -74,6 +74,7 @@ document.addEventListener('turbolinks:load', function() {
         // make sure it ends up in the right place
         setTimeout(function(){
           popover._popper.scheduleUpdate()
+          FontAwesome.dom.i2svg();
         }, 0);
       }
     });
@@ -86,6 +87,7 @@ document.addEventListener('turbolinks:load', function() {
       popover.find('button').removeClass("btn-warning").addClass("btn-danger");
       popover.find('button').html('<i class="fas fa-times"></i>');
       popover.find('button').prop('disabled', true);
+      FontAwesome.dom.i2svg();
     }, 0);
   })
 
@@ -99,6 +101,7 @@ document.addEventListener('turbolinks:load', function() {
       popover.find('button').removeClass("btn-warning").addClass("btn-success");
       popover.find('button').html('<i class="fas fa-check"></i>');
       popover.find('button').prop('disabled', true);
+      FontAwesome.dom.i2svg();
 
       text = jmespath.search(data, editable.data('path'))
       if ($.isArray(text)) {
@@ -107,10 +110,10 @@ document.addEventListener('turbolinks:load', function() {
 
       if (text == "") {
         editable.text('Empty')
-        editable.addClass('editable-empty')
+        editable.addClass('editable-empty');
       } else {
         editable.text(text);
-        editable.removeClass('editable-empty')
+        editable.removeClass('editable-empty');
       }
     }, 0);
 
