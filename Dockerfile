@@ -64,4 +64,4 @@ RUN echo $SOURCE_BRANCH >> /usr/src/garrison/source_branch
 RUN echo $SOURCE_COMMIT >> /usr/src/garrison/source_commit
 
 EXPOSE 3000
-CMD ["bundle", "exec", "puma", "-C", "config/puma.rb"]
+CMD ["bin/entry"]
