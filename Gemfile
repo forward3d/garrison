@@ -16,15 +16,18 @@ gem 'aasm', '~> 4.12', '>= 4.12.3'
 gem 'friendly_id', '~> 5.2', '>= 5.2.4'
 
 # frontend
-gem 'coffee-rails', '~> 4.2'
 gem 'haml', '~> 5.0', '>= 5.0.4'
-gem 'sass-rails', '~> 5.0'
 gem 'turbolinks', '~> 5'
-gem 'uglifier', '>= 1.3.0'
 
 # utility
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'discard', '~> 1.0'
+
+group :assets do
+  gem 'coffee-rails', '~> 4.2'
+  gem 'sass-rails', '~> 5.0'
+  gem 'uglifier', '>= 1.3.0'
+end
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

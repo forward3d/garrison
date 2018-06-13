@@ -23,7 +23,11 @@ default: &default
 
 development:
   <<: *default
-  database: garrison_development
+  host: <%= ENV['POSTGRES_HOST'] || 'localhost' %>
+  port: <%= ENV['POSTGRES_PORT'] || 5432 %>
+  database: <%= ENV['POSTGRES_DB'] || 'garrison_development' %>
+  username: <%= ENV['POSTGRES_USER'] || '' %>
+  password: <%= ENV['POSTGRES_PASSWORD'] || '' %>
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -80,6 +84,8 @@ test:
 #
 production:
   <<: *default
-  database: garrison_production
-  username: garrison
-  password: <%= ENV['GARRISON_DATABASE_PASSWORD'] %>
+  host: <%= ENV['POSTGRES_HOST'] %>
+  port: <%= ENV['POSTGRES_PORT'] %>
+  database: <%= ENV['POSTGRES_DB'] %>
+  username: <%= ENV['POSTGRES_USER'] %>
+  password: <%= ENV['POSTGRES_PASSWORD'] %>

@@ -1,0 +1,15 @@
+.bundle/
+.sass-cache/
+log/
+.git/
+*.log
+*.db
+.gitignore
+README.md
+docker-compose.yml
+Dockerfile
+test/
+doc/
+tmp/
+node_modules/
+storage/

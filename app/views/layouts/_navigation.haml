@@ -25,7 +25,7 @@
   .bottom
     .version
       %i.fas.fa-fw.fa-code-branch
-      = `git rev-parse --short HEAD`.chomp
+      = Rails.configuration.source_commit
   -#   %nav.nav
   -#     .dropup
   -#       %a.nav-link{"data-toggle" => "dropdown", href: "", title: "Profile"}

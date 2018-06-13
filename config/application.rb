@@ -15,5 +15,11 @@ module Garrison
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
+
+    config.source_commit = if File.exist?(File.join(Rails.root, 'source_commit'))
+                             File.read(File.join(Rails.root, 'source_commit'))
+                           else
+                             'abc123'
+                           end
   end
 end

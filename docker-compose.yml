@@ -1,0 +1,35 @@
+version: '2'
+services:
+  app:
+    build:
+      context: .
+      args:
+        RAILS_ENV: development
+    expose:
+      - 3000
+    ports:
+      - 3000:3000
+    depends_on:
+      - postgres
+    links:
+      - postgres:postgres
+    volumes:
+      - .:/usr/src/garrison
+    environment:
+      - PORT=3000
+      - POSTGRES_HOST=postgres
+      - POSTGRES_PORT=5432
+      - POSTGRES_DB=garrison_development
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+
+  postgres:
+    image: postgres:10.4-alpine
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=garrison_development
+    expose:
+      - 5432
+    ports:
+      - 5432:5432
