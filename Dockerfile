@@ -29,7 +29,7 @@ RUN set -ex; \
   fi;
 
 COPY . /usr/src/garrison
-RUN bundle exec rake assets:precompile
+RUN SECRET_KEY_BASE=1 bundle exec rake assets:precompile
 
 RUN rm -rf /usr/src/garrison/app/assets
 RUN rm -rf /usr/src/garrison/node_modules
