@@ -1,24 +1,57 @@
-# README
+Garrison
+--
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Garrison is a security service for consolidating alerts from many other systems down
+to a single web dashboard.
 
-Things you may want to cover:
+### Preface
 
-* Ruby version
+Garrison is made up of two parts...
 
-* System dependencies
+1. Dashboard
+2. Agents
 
-* Configuration
+#### Web interface
 
-* Database creation
+A Ruby on Rails web app, which utilizes a PostgreSQL database for alert storage.
 
-* Database initialization
+#### Agents
 
-* How to run the test suite
+These populate the alerts you see in the dashboard, they are primarily lightweight docker containers. They are responsible for sending data to the web API which populates the interface.
 
-* Services (job queues, cache servers, search engines, etc.)
+There are some pre-built agents, but you can create your own agents very easily if you need to.
 
-* Deployment instructions
+### Installation
 
-* ...
+We provide pre-build Docker containers for all parts of the service which are available on Docker Hub.
+
+* Dashboard - https://hub.docker.com/r/forward3d/garrison/
+* Agents - See individual agent documentation
+
+### Configuration
+
+#### Dashboard
+
+TODO
+
+#### Agents
+
+There are some global configuration options for agents, these are provided to the agent containers via environmental variables. Some agents may have additional configuration options, however these will be documented with the individual agent.
+
+##### Global Configuration Options
+
+| Environmental Variable  | Description |
+| ------------- | ------------- |
+| `GARRISON_URL`  | URL to the Garrison web interface eg. `https://garrison.internal.acme.com` |
+| `GARRISON_ALERT_SEVERITY` | Severity slug eg. `critical`, `high`, `medium`, `low`, `info` [[1]](#f1) |
+| `GARRISON_ALERT_FAMILY` | Family slug eg. `attack`, `infrastructure`, `software`, `networking` [[1]](#f1) |
+| `GARRISON_ALERT_TYPE` | Type slug eg. `security`, `compliance`, `informational` [[1]](#f1) |
+
+
+1. <span id="f1"></span> Or any other custom ones you have created within Garrison
+
+### Available Agents
+
+| Name  | Description |
+| ------------- | ------------- |
+| [AWS RDS](https://github.com/forward3d/garrison-agent-aws-rds) | Compliance checks, encryption enabled, backup retention etc |
