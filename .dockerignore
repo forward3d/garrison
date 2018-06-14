@@ -9,7 +9,7 @@ README.md
 docker-compose.yml
 Dockerfile
 test/
-doc/
+docs/
 tmp/
 node_modules/
 storage/

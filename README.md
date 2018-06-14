@@ -4,6 +4,8 @@ Garrison
 Garrison is a security service for consolidating alerts from many other systems down
 to a single web dashboard.
 
+![Garrison UI](https://raw.githubusercontent.com/forward3d/garrison/master/docs/screenshot.png)
+
 ### Preface
 
 Garrison is made up of two parts...
