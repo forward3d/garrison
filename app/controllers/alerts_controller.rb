@@ -23,6 +23,10 @@ class AlertsController < ApplicationController
       @alerts = @alerts.source(@filter_params[:sources])         if @filter_params[:sources]
       @alerts = @alerts.department(@filter_params[:departments]) if @filter_params[:departments]
       @alerts = @alerts.user(@filter_params[:users])             if @filter_params[:users]
+    else
+      @filter_params = {}
+      @filter_params[:states] = %w[unverified verified]
+      @alerts = @alerts.state(@filter_params[:states])
     end
 
     @alerts = @alerts.order('severities.order desc, last_detected_at desc')
