@@ -30,6 +30,7 @@ class Api::V1::AlertsController < Api::V1::BaseController
     alert.severity_external = Severity.friendly.find(alert_params[:severity])
 
     if alert.persisted?
+      alert.detail = alert_params[:detail]
       alert.count += 1
       alert.audits.build(created_at: alert_params[:detected_at], kind: 'detected', action: 'Repeat Alert', icon: 'fas fa-exclamation-circle')
     else
