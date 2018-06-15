@@ -66,3 +66,4 @@ All optional variables will contain a sane default by the individual check itsel
 | Name  | Description |
 | ------------- | ------------- |
 | [AWS RDS](https://github.com/forward3d/garrison-agent-aws-rds) | Compliance checks, encryption enabled, backup retention etc |
+| [CVE Details](https://github.com/forward3d/garrison-agent-cve-details) | Security checks, pulls specific vendor & product CVEs |
