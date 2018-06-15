@@ -56,8 +56,10 @@ All optional variables will contain a sane default by the individual check itsel
 | `GARRISON_ALERT_SEVERITY` | Severity slug eg. `critical`, `high`, `medium`, `low`, `info` [[1]](#f1) |
 | `GARRISON_ALERT_FAMILY` | Family slug eg. `attack`, `infrastructure`, `software`, `networking` [[1]](#f1) |
 | `GARRISON_ALERT_TYPE` | Type slug eg. `security`, `compliance`, `informational` [[1]](#f1) |
+| `GARRISON_ALERT_DEPARTMENTS` | Comma Separated list of Department slugs eg. `it,development` [[2]](#f2) |
 
-1. <span id="f1"></span> Or any other custom ones you have created within Garrison
+1. <span id="f1"></span> Or any other custom ones you have created within Garrison.
+2. <span id="f2"></span> Departments must already exist.
 
 ### Available Agents
 
