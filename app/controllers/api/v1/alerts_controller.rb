@@ -41,6 +41,7 @@ class Api::V1::AlertsController < Api::V1::BaseController
       alert.kind = Kind.friendly.find(alert_params[:kind])
       alert.family = Family.friendly.find(alert_params[:family])
       alert.severity_internal = Severity.friendly.find(alert_params[:severity])
+      alert.departments << alert_params[:departments].map { |d| Department.friendly.find(d) } if alert_params[:departments]
     end
 
     alert.save!
@@ -63,7 +64,8 @@ class Api::V1::AlertsController < Api::V1::BaseController
       :source,
       :severity,
       urls: [:name, :url],
-      key_values: [:key, :value]
+      key_values: [:key, :value],
+      departments: []
     )
   end
 
