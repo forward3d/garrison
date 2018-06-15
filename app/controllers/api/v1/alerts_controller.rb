@@ -31,8 +31,10 @@ class Api::V1::AlertsController < Api::V1::BaseController
 
     if alert.persisted?
       alert.detail = alert_params[:detail]
-      alert.count += 1
-      alert.audits.build(created_at: alert_params[:detected_at], kind: 'detected', action: 'Repeat Alert', icon: 'fas fa-exclamation-circle')
+      unless alert_params[:no_repeat]
+        alert.count += 1
+        alert.audits.build(created_at: alert_params[:detected_at], kind: 'detected', action: 'Repeat Alert', icon: 'fas fa-exclamation-circle')
+      end
     else
       alert.name = alert_params[:name]
       alert.detail = alert_params[:detail]
