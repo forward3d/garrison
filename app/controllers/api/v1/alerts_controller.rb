@@ -25,21 +25,22 @@ class Api::V1::AlertsController < Api::V1::BaseController
       alert.key_values.find_or_initialize_by(key: kv[:key], value: kv[:value])
     end if alert_params[:key_values]
 
-    alert.last_detected_at = alert_params[:detected_at]
+    alert.last_detected_at = alert_params[:last_detected_at]
     alert.finding = alert_params[:finding]
     alert.severity_external = Severity.friendly.find(alert_params[:severity])
 
     if alert.persisted?
       alert.detail = alert_params[:detail]
       unless alert_params[:no_repeat]
-        alert.count += 1
+        alert.count = alert_params[:count].nil? ? alert.count + 1 : alert_params[:count]
         alert.audits.build(created_at: alert_params[:detected_at], kind: 'detected', action: 'Repeat Alert', icon: 'fas fa-exclamation-circle')
       end
     else
+      alert.count = alert_params[:count].nil? ? 1 : alert_params[:count]
       alert.name = alert_params[:name]
       alert.detail = alert_params[:detail]
+      alert.first_detected_at = alert_params[:first_detected_at]
       alert.notes = alert_params[:notes]
-      alert.first_detected_at = alert_params[:detected_at]
       alert.kind = Kind.friendly.find(alert_params[:kind])
       alert.family = Family.friendly.find(alert_params[:family])
       alert.severity_internal = Severity.friendly.find(alert_params[:severity])
@@ -60,11 +61,14 @@ class Api::V1::AlertsController < Api::V1::BaseController
       :notes,
       :finding,
       :finding_id,
-      :detected_at,
+      :first_detected_at,
+      :last_detected_at,
       :kind,
       :family,
       :source,
       :severity,
+      :no_repeat,
+      :count,
       urls: [:name, :url],
       key_values: [:key, :value],
       departments: []
