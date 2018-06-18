@@ -22,6 +22,8 @@ services:
       - POSTGRES_DB=garrison_development
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
+      - RAILS_ENV=development
+      - SECRET_KEY_BASE=somethingsecret
 
   postgres:
     image: postgres:10.4-alpine
