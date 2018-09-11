@@ -17,4 +17,6 @@ Rails.application.routes.draw do
       resources :alerts, only: [:index, :create, :show]
     end
   end
+
+  health_check_routes
 end

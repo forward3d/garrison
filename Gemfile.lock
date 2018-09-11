@@ -94,6 +94,8 @@ GEM
     haml (5.0.4)
       temple (>= 0.8.0)
       tilt
+    health_check (3.0.0)
+      railties (>= 5.0)
     i18n (1.1.0)
       concurrent-ruby (~> 1.0)
     io-like (0.3.0)
@@ -216,6 +218,7 @@ DEPENDENCIES
   discard (~> 1.0)
   friendly_id (~> 5.2, >= 5.2.4)
   haml (~> 5.0, >= 5.0.4)
+  health_check (~> 3.0)
   listen (>= 3.0.5, < 3.2)
   pg (>= 0.18, < 2.0)
   puma (~> 3.11)

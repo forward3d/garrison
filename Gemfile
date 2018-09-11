@@ -10,6 +10,7 @@ gem 'rails', '~> 5.2.0'
 
 # api
 gem 'active_model_serializers', '~> 0.10.7'
+gem 'health_check', '~> 3.0'
 
 # models
 gem 'aasm', '~> 4.12', '>= 4.12.3'
