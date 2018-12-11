@@ -1,0 +1,67 @@
+{
+    "master_picture": "docs/garrison.svg",
+    "favicon_design": {
+        "ios": {
+            "master_picture": {
+                "type": "inline",
+                "content": "PHN2ZyB3aWR0aD0iNTQwIiBoZWlnaHQ9IjU0MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBjbGFzcz0ic3ZnLWlubGluZS0tZmEgZmEtY2hlc3Mtcm9vayBmYS13LTEyIj4KCiA8Zz4KICA8dGl0bGU+YmFja2dyb3VuZDwvdGl0bGU+CiAgPHJlY3QgZmlsbD0ibm9uZSIgaWQ9ImNhbnZhc19iYWNrZ3JvdW5kIiBoZWlnaHQ9IjU0MiIgd2lkdGg9IjU0MiIgeT0iLTEiIHg9Ii0xIi8+CiA8L2c+CiA8Zz4KICA8dGl0bGU+TGF5ZXIgMTwvdGl0bGU+CiAgPHBhdGggaWQ9InN2Z18xIiBkPSJtMTU5LjI0MSwyMTMuMDI3Yy0wLjI4NCw0My44OTMgLTMuODMsMTMzLjA0OSAtMzMuMjQxLDIzMi45NzNsMjg3Ljk4MiwwYy0yOS40LC05OS42MDQgLTMyLjkzNiwtMTg4LjkxMiAtMzMuMjIxLC0yMzIuOTc1bDQ1LjQxOCwtNDIuMzEyYTExLjk5OCwxMS45OTggMCAwIDAgMy44MiwtOC43OGwwLC0xMTkuOTMzYzAsLTYuNjI3IC01LjM3MywtMTIgLTEyLC0xMmwtNDAsMGMtNi42MjcsMCAtMTIsNS4zNzMgLTEyLDEybDAsNDRsLTQ4LDBsMCwtNDRjMCwtNi42MjcgLTUuMzczLC0xMiAtMTIsLTEybC03MiwwYy02LjYyNywwIC0xMiw1LjM3MyAtMTIsMTJsMCw0NGwtNDcuOTk5LDBsMCwtNDRjMCwtNi42MjcgLTUuMzczLC0xMiAtMTIsLTEybC00MCwwYy02LjYyNywwIC0xMiw1LjM3MyAtMTIsMTJsMCwxMTkuOTMyYzAsMy4zMyAxLjM4NCw2LjUxIDMuODIsOC43OGw0NS40MjEsNDIuMzE1em03OC43NTksNDAuOTczYzAsLTE3LjY3MyAxNC4zMjcsLTMyIDMyLC0zMmMxNy42NzMsMCAzMiwxNC4zMjcgMzIsMzJsMCw2NC4wMDRsLTY0LDBsMCwtNjQuMDA0em0yMjQsMjIwbDAsMjRjMCw2LjYyNyAtNS4zNzMsMTIgLTEyLDEybC0zNjAsMGMtNi42MjcsMCAtMTIsLTUuMzczIC0xMiwtMTJsMCwtMjRjMCwtNi42MjcgNS4zNzMsLTEyIDEyLC0xMmwzNjAsMGM2LjYyNywwIDEyLDUuMzczIDEyLDEyeiIgZmlsbD0iI2ZmZmZmZiIvPgogPC9nPgo8L3N2Zz4K"
+            },
+            "picture_aspect": "background_and_margin",
+            "background_color": "#2f323b",
+            "margin": "14%",
+            "assets": {
+                "ios6_and_prior_icons": false,
+                "ios7_and_later_icons": false,
+                "precomposed_icons": false,
+                "declare_only_default_icon": true
+            }
+        },
+        "desktop_browser": [
+
+        ],
+        "windows": {
+            "picture_aspect": "white_silhouette",
+            "background_color": "#2f323b",
+            "on_conflict": "override",
+            "assets": {
+                "windows_80_ie_10_tile": false,
+                "windows_10_ie_11_edge_tiles": {
+                    "small": false,
+                    "medium": true,
+                    "big": false,
+                    "rectangle": false
+                }
+            }
+        },
+        "android_chrome": {
+            "master_picture": {
+                "type": "inline",
+                "content": "PHN2ZyB3aWR0aD0iNTQwIiBoZWlnaHQ9IjU0MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBjbGFzcz0ic3ZnLWlubGluZS0tZmEgZmEtY2hlc3Mtcm9vayBmYS13LTEyIj4KCiA8Zz4KICA8dGl0bGU+YmFja2dyb3VuZDwvdGl0bGU+CiAgPHJlY3QgZmlsbD0ibm9uZSIgaWQ9ImNhbnZhc19iYWNrZ3JvdW5kIiBoZWlnaHQ9IjU0MiIgd2lkdGg9IjU0MiIgeT0iLTEiIHg9Ii0xIi8+CiA8L2c+CiA8Zz4KICA8dGl0bGU+TGF5ZXIgMTwvdGl0bGU+CiAgPHBhdGggaWQ9InN2Z18xIiBkPSJtMTU5LjI0MSwyMTMuMDI3Yy0wLjI4NCw0My44OTMgLTMuODMsMTMzLjA0OSAtMzMuMjQxLDIzMi45NzNsMjg3Ljk4MiwwYy0yOS40LC05OS42MDQgLTMyLjkzNiwtMTg4LjkxMiAtMzMuMjIxLC0yMzIuOTc1bDQ1LjQxOCwtNDIuMzEyYTExLjk5OCwxMS45OTggMCAwIDAgMy44MiwtOC43OGwwLC0xMTkuOTMzYzAsLTYuNjI3IC01LjM3MywtMTIgLTEyLC0xMmwtNDAsMGMtNi42MjcsMCAtMTIsNS4zNzMgLTEyLDEybDAsNDRsLTQ4LDBsMCwtNDRjMCwtNi42MjcgLTUuMzczLC0xMiAtMTIsLTEybC03MiwwYy02LjYyNywwIC0xMiw1LjM3MyAtMTIsMTJsMCw0NGwtNDcuOTk5LDBsMCwtNDRjMCwtNi42MjcgLTUuMzczLC0xMiAtMTIsLTEybC00MCwwYy02LjYyNywwIC0xMiw1LjM3MyAtMTIsMTJsMCwxMTkuOTMyYzAsMy4zMyAxLjM4NCw2LjUxIDMuODIsOC43OGw0NS40MjEsNDIuMzE1em03OC43NTksNDAuOTczYzAsLTE3LjY3MyAxNC4zMjcsLTMyIDMyLC0zMmMxNy42NzMsMCAzMiwxNC4zMjcgMzIsMzJsMCw2NC4wMDRsLTY0LDBsMCwtNjQuMDA0em0yMjQsMjIwbDAsMjRjMCw2LjYyNyAtNS4zNzMsMTIgLTEyLDEybC0zNjAsMGMtNi42MjcsMCAtMTIsLTUuMzczIC0xMiwtMTJsMCwtMjRjMCwtNi42MjcgNS4zNzMsLTEyIDEyLC0xMmwzNjAsMGM2LjYyNywwIDEyLDUuMzczIDEyLDEyeiIgZmlsbD0iI2ZmZmZmZiIvPgogPC9nPgo8L3N2Zz4K"
+            },
+            "picture_aspect": "shadow",
+            "theme_color": "#2f323b",
+            "manifest": {
+                "name": "Garrison",
+                "display": "standalone",
+                "orientation": "not_set",
+                "on_conflict": "override",
+                "declared": true
+            },
+            "assets": {
+                "legacy_icon": false,
+                "low_resolution_icons": false
+            }
+        },
+        "safari_pinned_tab": {
+            "picture_aspect": "silhouette",
+            "theme_color": "#2f323b"
+        }
+    },
+    "settings": {
+        "scaling_algorithm": "Mitchell",
+        "error_on_image_too_small": false,
+        "readme_file": false,
+        "html_code_file": false,
+        "use_path_as_is": false
+    }
+}
