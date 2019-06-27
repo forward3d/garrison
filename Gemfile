@@ -13,7 +13,7 @@ gem 'active_model_serializers', '~> 0.10.7'
 gem 'health_check', '~> 3.0'
 
 # models
-gem 'aasm', '~> 4.12', '>= 4.12.3'
+gem 'aasm', '~> 5.0'
 gem 'friendly_id', '~> 5.2', '>= 5.2.4'
 
 # frontend
