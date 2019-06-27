@@ -18,10 +18,7 @@
 //= require popper.js/dist/umd/popper
 //= require bootstrap/dist/js/bootstrap
 //= require bootstrap-select/dist/js/bootstrap-select
-//= require @fortawesome/fontawesome
-//= require @fortawesome/fontawesome-free-regular
-//= require @fortawesome/fontawesome-free-solid
-//= require @fortawesome/fontawesome-free-brands
+//= require @fortawesome/fontawesome-free/js/all.min
 //= require chart.js/dist/Chart
 //= require jmespath/jmespath
 //= require_tree .
