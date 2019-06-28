@@ -49,6 +49,10 @@
           %tr
             %td.key Resolved
             %td.detail= alert.resolved_at
+        - if alert.obsoleted_at
+          %tr
+            %td.key Obsoleted
+            %td.detail= alert.obsoleted_at
         %tr
           %td.key Created
           %td.detail= alert.created_at
@@ -90,6 +94,16 @@
               %td.key= kv.key
               %td.detail= kv.value
 
+    .header{:style => "margin-top: 0px"} Last Agent
+    %table.table.table-striped.table-hover.table-sm
+      %tbody
+        %tr
+          %td.key UUID
+          %td.detail-sm= alert.agent_uuid
+        %tr
+          %td.key Run UUID
+          %td.detail-sm= alert.agent_run_uuid
+
   .row.basic
     .col
       .key Type
@@ -130,15 +144,15 @@
     .col
       - if alert.unverified?
         %a.badge{class: "state state-unverified-bg flash"}
-          %i.fa-fw.fas.fa-question
+          %i.fa-fw.fas.fa-question-circle
           Unverified
       - elsif alert.may_unverify?
         = link_to unverify_alert_path(alert), remote: true, data: { type: :json }, method: :post, class: 'badge state state-unverified-bg' do
-          %i.fa-fw.fas.fa-question
+          %i.fa-fw.fas.fa-question-circle
           Unverified
       - else
         %span.badge{class: "state state-unverified-bg"}
-          %i.fa-fw.fas.fa-question
+          %i.fa-fw.fas.fa-question-circle
           Unverified
 
     .col-1
@@ -147,45 +161,51 @@
     .col
       - if alert.verified?
         %a.badge{class: "state state-verified-bg flash"}
-          %i.fa-fw.far.fa-eye
+          %i.fa-fw.fas.fa-plus-circle
           Verified
       - elsif alert.may_verify?
         = link_to verify_alert_path(alert), remote: true, data: { type: :json }, method: :post, class: 'badge state state-verified-bg' do
-          %i.fa-fw.far.fa-eye
+          %i.fa-fw.fas.fa-plus-circle
           Verified
       - else
         %span.badge{class: "state state-verified-bg"}
-          %i.fa-fw.far.fa-eye
+          %i.fa-fw.fas.fa-plus-circle
           Verified
 
     .col-1
       %i.fas.fa-long-arrow-alt-right
+
     .col
       - if alert.rejected?
         %a.badge{class: "state state-rejected-bg flash"}
-          %i.fa-fw.fas.fa-skull
+          %i.fa-fw.fas.fa-times-circle
           Rejected
       - elsif alert.may_reject?
         = link_to reject_alert_path(alert), remote: true, data: { type: :json }, method: :post, class: 'badge state state-rejected-bg' do
-          %i.fa-fw.fas.fa-skull
+          %i.fa-fw.fas.fa-times-circle
           Rejected
       - else
         %span.badge{class: "state state-rejected-bg"}
-          %i.fa-fw.fas.fa-skull
+          %i.fa-fw.fas.fa-times-circle
           Rejected
 
       - if alert.resolved?
         %a.badge{class: "state state-resolved-bg flash"}
-          %i.fa-fw.fas.fa-flag-checkered
+          %i.fa-fw.fas.fa-check-circle
           Resolved
       - elsif alert.may_resolve?
         = link_to resolve_alert_path(alert), remote: true, data: { type: :json }, method: :post, class: 'badge state state-resolved-bg' do
-          %i.fa-fw.fas.fa-flag-checkered
+          %i.fa-fw.fas.fa-check-circle
           Resolved
       - else
         %span.badge{class: "state state-resolved-bg"}
-          %i.fa-fw.fas.fa-flag-checkered
+          %i.fa-fw.fas.fa-check-circle
           Resolved
+
+      - if alert.obsoleted?
+        %a.badge{class: "state state-obsoleted-bg flash"}
+          %i.fa-fw.fas.fa-minus-circle
+          Obsoleted
 
   - if alert.urls.any?
     %hr/

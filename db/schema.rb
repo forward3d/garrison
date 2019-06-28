@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_06_201903) do
+ActiveRecord::Schema.define(version: 2019_06_27_184307) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -62,9 +62,15 @@ ActiveRecord::Schema.define(version: 2018_06_06_201903) do
     t.datetime "discarded_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.uuid "agent_uuid"
+    t.uuid "agent_run_uuid"
+    t.datetime "obsoleted_at"
+    t.index ["agent_run_uuid"], name: "index_alerts_on_agent_run_uuid"
+    t.index ["agent_uuid"], name: "index_alerts_on_agent_uuid"
     t.index ["discarded_at"], name: "index_alerts_on_discarded_at"
     t.index ["family_id"], name: "index_alerts_on_family_id"
     t.index ["kind_id"], name: "index_alerts_on_kind_id"
+    t.index ["obsoleted_at"], name: "index_alerts_on_obsoleted_at"
     t.index ["severity_external_id"], name: "index_alerts_on_severity_external_id"
     t.index ["severity_internal_id"], name: "index_alerts_on_severity_internal_id"
     t.index ["source_id"], name: "index_alerts_on_source_id"

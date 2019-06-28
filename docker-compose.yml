@@ -26,7 +26,7 @@ services:
       - SECRET_KEY_BASE=somethingsecret
 
   postgres:
-    image: postgres:10.5-alpine
+    image: postgres:11.4-alpine
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres

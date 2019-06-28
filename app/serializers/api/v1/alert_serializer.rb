@@ -12,7 +12,10 @@ class Api::V1::AlertSerializer < ActiveModel::Serializer
   has_many :audits
   has_many :key_values
 
-  attributes :id, :state, :count, :name, :target, :detail, :ticket, :notes, :finding, :finding_id, :first_detected_at, :last_detected_at, :assigned_at, :resolved_at, :created_at, :updated_at
+  attributes :id, :state, :count, :name, :target, :detail, :ticket, :notes,
+    :finding, :finding_id, :first_detected_at, :last_detected_at, :assigned_at,
+    :resolved_at, :created_at, :updated_at, :agent_uuid, :agent_run_uuid,
+    :obsoleted_at
 
   class AuditSerializer < ActiveModel::Serializer
     attributes :id, :icon, :kind, :action, :author, :created_at
