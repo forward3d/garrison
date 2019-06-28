@@ -69,6 +69,10 @@
             %span.fa-layers.fa-fw
               %i.fas.fa-circle.state-resolved
               %i.fas.fa-flag-checkered{title: 'Resolved', "data-fa-transform" => "shrink-6"}
+          - if alert.obsoleted?
+            %span.fa-layers.fa-fw
+              %i.fas.fa-circle.state-obsoleted
+              %i.fas.fa-minus-circle{title: 'Obsoleted', "data-fa-transform" => "shrink-6"}
           #{alert.name}
           - if alert.count > 1
             %small x#{alert.count}

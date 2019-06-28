@@ -39,6 +39,7 @@ class Alert < ApplicationRecord
     state :verified
     state :rejected
     state :resolved
+    state :obsoleted
 
     event :unverify do
       transitions from: [:verified], to: :unverified
@@ -54,6 +55,10 @@ class Alert < ApplicationRecord
 
     event :resolve, after: :set_resolved_at do
       transitions from: [:unverified, :verified], to: :resolved
+    end
+
+    event :obsolete, after: :set_obsoleted_at do
+      transitions from: [:verified, :unverified], to: :obsoleted
     end
   end
 
@@ -75,6 +80,10 @@ class Alert < ApplicationRecord
     update_attribute(:resolved_at, Time.now.utc)
   end
 
+  def set_obsoleted_at
+    update_attribute(:obsoleted_at, Time.now.utc)
+  end
+
   def set_verified_at
     update_attribute(:verified_at, Time.now.utc)
   end
@@ -85,6 +94,7 @@ class Alert < ApplicationRecord
 
   def log_status_change
     icon = 'fas fa-check-circle' if aasm.to_state == 'resolved'
+    icon = 'fas fa-minus-circle' if aasm.to_state == 'obsoleted'
     audits.create(kind: 'status change', action: "Set to #{aasm.to_state}", icon: icon)
   end
 

@@ -49,6 +49,10 @@
           %tr
             %td.key Resolved
             %td.detail= alert.resolved_at
+        - if alert.obsoleted_at
+          %tr
+            %td.key Obsoleted
+            %td.detail= alert.obsoleted_at
         %tr
           %td.key Created
           %td.detail= alert.created_at
@@ -89,6 +93,16 @@
             %tr
               %td.key= kv.key
               %td.detail= kv.value
+
+    .header{:style => "margin-top: 0px"} Last Agent
+    %table.table.table-striped.table-hover.table-sm
+      %tbody
+        %tr
+          %td.key UUID
+          %td.detail-sm= alert.agent_uuid
+        %tr
+          %td.key Run UUID
+          %td.detail-sm= alert.agent_run_uuid
 
   .row.basic
     .col
@@ -186,6 +200,11 @@
         %span.badge{class: "state state-resolved-bg"}
           %i.fa-fw.fas.fa-flag-checkered
           Resolved
+
+      - if alert.obsoleted?
+        %a.badge{class: "state state-obsoleted-bg flash"}
+          %i.fa-fw.fas.fa-minus-circle
+          Obsoleted
 
   - if alert.urls.any?
     %hr/

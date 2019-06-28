@@ -14,7 +14,11 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :alerts, only: [:index, :create, :show]
+      resources :alerts, only: [:index, :create, :show] do
+        collection do
+          post :obsolete
+        end
+      end
     end
   end
 
