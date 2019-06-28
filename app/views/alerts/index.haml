@@ -56,19 +56,19 @@
           - if alert.unverified?
             %span.fa-layers.fa-fw
               %i.fas.fa-circle.state-unverified
-              %i.fas.fa-question{title: 'Unverified', "data-fa-transform" => "shrink-6"}
+              %i.fas.fa-question-circle{title: 'Unverified', "data-fa-transform" => "shrink-6"}
           - if alert.verified?
             %span.fa-layers.fa-fw
               %i.fas.fa-circle.state-verified
-              %i.far.fa-eye{title: 'Verified', "data-fa-transform" => "shrink-6"}
+              %i.fas.fa-plus-circle{title: 'Verified', "data-fa-transform" => "shrink-6"}
           - if alert.rejected?
             %span.fa-layers.fa-fw
               %i.fas.fa-circle.state-rejected
-              %i.fas.fa-skull{title: 'Rejected', "data-fa-transform" => "shrink-6"}
+              %i.fas.fa-times-circle{title: 'Rejected', "data-fa-transform" => "shrink-6"}
           - if alert.resolved?
             %span.fa-layers.fa-fw
               %i.fas.fa-circle.state-resolved
-              %i.fas.fa-flag-checkered{title: 'Resolved', "data-fa-transform" => "shrink-6"}
+              %i.fas.fa-check-circle{title: 'Resolved', "data-fa-transform" => "shrink-6"}
           - if alert.obsoleted?
             %span.fa-layers.fa-fw
               %i.fas.fa-circle.state-obsoleted
