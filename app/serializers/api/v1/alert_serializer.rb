@@ -14,8 +14,7 @@ class Api::V1::AlertSerializer < ActiveModel::Serializer
 
   attributes :id, :state, :count, :name, :target, :detail, :ticket, :notes,
     :finding, :finding_id, :first_detected_at, :last_detected_at, :assigned_at,
-    :resolved_at, :created_at, :updated_at, :agent_uuid, :agent_run_uuid,
-    :obsoleted_at
+    :resolved_at, :created_at, :updated_at, :agent_id, :run_id, :obsoleted_at
 
   class AuditSerializer < ActiveModel::Serializer
     attributes :id, :icon, :kind, :action, :author, :created_at

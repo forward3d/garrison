@@ -6,6 +6,7 @@ class Source < ApplicationRecord
   friendly_id :name, use: :slugged
 
   has_many :alerts
+  has_many :agents
 
   validates :name, presence: true
 

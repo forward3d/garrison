@@ -97,12 +97,27 @@
     .header{:style => "margin-top: 0px"} Last Agent
     %table.table.table-striped.table-hover.table-sm
       %tbody
-        %tr
-          %td.key UUID
-          %td.detail-sm= alert.agent_uuid
-        %tr
-          %td.key Run UUID
-          %td.detail-sm= alert.agent_run_uuid
+        - if alert.agent
+          %tr
+            %td.key UUID
+            %td.detail-sm= alert.agent_id
+          %tr
+            %td.key Name
+            %td.detail= alert.agent.check
+
+    .header{:style => "margin-top: 0px"} Last Run
+    %table.table.table-striped.table-hover.table-sm
+      %tbody
+        - if alert.run
+          %tr
+            %td.key UUID
+            %td.detail-sm= alert.run_id
+          %tr
+            %td.key Started At
+            %td.detail= alert.run.started_at
+          %tr
+            %td.key Ended At
+            %td.detail= alert.run.ended_at
 
   .row.basic
     .col

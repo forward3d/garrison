@@ -10,11 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_27_184307) do
+ActiveRecord::Schema.define(version: 2019_07_02_004155) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
+
+  create_table "agents", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "source_id", null: false
+    t.string "check", null: false
+    t.datetime "discarded_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["check"], name: "index_agents_on_check"
+    t.index ["discarded_at"], name: "index_agents_on_discarded_at"
+    t.index ["source_id"], name: "index_agents_on_source_id"
+  end
 
   create_table "alert_departments", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "alert_id", null: false
@@ -62,15 +73,15 @@ ActiveRecord::Schema.define(version: 2019_06_27_184307) do
     t.datetime "discarded_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.uuid "agent_uuid"
-    t.uuid "agent_run_uuid"
+    t.uuid "agent_id"
+    t.uuid "run_id"
     t.datetime "obsoleted_at"
-    t.index ["agent_run_uuid"], name: "index_alerts_on_agent_run_uuid"
-    t.index ["agent_uuid"], name: "index_alerts_on_agent_uuid"
+    t.index ["agent_id"], name: "index_alerts_on_agent_id"
     t.index ["discarded_at"], name: "index_alerts_on_discarded_at"
     t.index ["family_id"], name: "index_alerts_on_family_id"
     t.index ["kind_id"], name: "index_alerts_on_kind_id"
     t.index ["obsoleted_at"], name: "index_alerts_on_obsoleted_at"
+    t.index ["run_id"], name: "index_alerts_on_run_id"
     t.index ["severity_external_id"], name: "index_alerts_on_severity_external_id"
     t.index ["severity_internal_id"], name: "index_alerts_on_severity_internal_id"
     t.index ["source_id"], name: "index_alerts_on_source_id"
@@ -139,6 +150,21 @@ ActiveRecord::Schema.define(version: 2019_06_27_184307) do
     t.index ["discarded_at"], name: "index_kinds_on_discarded_at"
   end
 
+  create_table "runs", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "agent_id", null: false
+    t.string "state"
+    t.datetime "started_at"
+    t.datetime "ended_at"
+    t.datetime "discarded_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["agent_id"], name: "index_runs_on_agent_id"
+    t.index ["discarded_at"], name: "index_runs_on_discarded_at"
+    t.index ["ended_at"], name: "index_runs_on_ended_at"
+    t.index ["started_at"], name: "index_runs_on_started_at"
+    t.index ["state"], name: "index_runs_on_state"
+  end
+
   create_table "severities", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "slug", null: false
     t.string "name", null: false
@@ -183,16 +209,20 @@ ActiveRecord::Schema.define(version: 2019_06_27_184307) do
     t.index ["discarded_at"], name: "index_users_on_discarded_at"
   end
 
+  add_foreign_key "agents", "sources"
   add_foreign_key "alert_departments", "alerts"
   add_foreign_key "alert_departments", "departments"
   add_foreign_key "alert_users", "alerts"
   add_foreign_key "alert_users", "users"
+  add_foreign_key "alerts", "agents"
   add_foreign_key "alerts", "families"
   add_foreign_key "alerts", "kinds"
+  add_foreign_key "alerts", "runs"
   add_foreign_key "alerts", "severities", column: "severity_external_id"
   add_foreign_key "alerts", "severities", column: "severity_internal_id"
   add_foreign_key "alerts", "sources"
   add_foreign_key "audits", "alerts"
   add_foreign_key "key_values", "alerts"
+  add_foreign_key "runs", "agents"
   add_foreign_key "urls", "alerts"
 end

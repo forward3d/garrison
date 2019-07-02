@@ -28,8 +28,8 @@ class Api::V1::AlertsController < Api::V1::BaseController
     alert.last_detected_at = alert_params[:last_detected_at]
     alert.finding = alert_params[:finding]
     alert.severity_external = Severity.friendly.find(alert_params[:severity])
-    alert.agent_uuid = alert_params[:agent_uuid]
-    alert.agent_run_uuid = alert_params[:agent_run_uuid]
+    alert.agent_id = alert_params[:agent_id]
+    alert.run_id = alert_params[:run_id]
 
     if alert.persisted?
       alert.detail = alert_params[:detail]
@@ -56,8 +56,8 @@ class Api::V1::AlertsController < Api::V1::BaseController
   def obsolete
     source = Source.kept.find_by(slug: alert_params[:source])
     alerts = source.alerts.kept.verified.or(Alert.unverified). \
-      where(agent_uuid: alert_params[:agent_uuid]). \
-      where.not(agent_run_uuid: alert_params[:agent_run_uuid]). \
+      where(agent_id: alert_params[:agent_id]). \
+      where.not(run_id: alert_params[:run_id]). \
       each(&:obsolete!)
 
     render json: alerts, each_serializer: Api::V1::AlertSerializer
@@ -81,8 +81,8 @@ class Api::V1::AlertsController < Api::V1::BaseController
       :severity,
       :no_repeat,
       :count,
-      :agent_uuid,
-      :agent_run_uuid,
+      :agent_id,
+      :run_id,
       urls: [:name, :url],
       key_values: [:key, :value],
       departments: []

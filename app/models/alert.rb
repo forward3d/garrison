@@ -6,6 +6,8 @@ class Alert < ApplicationRecord
   belongs_to :kind
   belongs_to :family
   belongs_to :source
+  belongs_to :agent
+  belongs_to :run
 
   belongs_to :severity_internal, class_name: 'Severity'
   belongs_to :severity_external, class_name: 'Severity'
