@@ -44,7 +44,7 @@ There are some global configuration options for agents, these are provided to th
 
 Each agent **must be registered** before you use them as they need an Agent UUID. You can get this by `POST`ing to the API...
 
-`curl -d '{"agent": {"source": "aws-rds", "check": "CheckEngineVersion"}}' -H "Content-Type: application/json" -X POST https://garrison.internal.acme.com/api/v1/agents`
+`curl -d '{"agent": {"source": "aws-rds", "check": "check_engine_version"}}' -H "Content-Type: application/json" -X POST https://garrison.internal.acme.com/api/v1/agents`
 
 This is done so that alerts can be traced back to a single run of an agent, all the way down to the specific check type.
 
