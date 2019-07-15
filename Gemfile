@@ -9,7 +9,7 @@ gem 'puma', '~> 4.0'
 gem 'rails', '~> 5.2.0'
 
 # api
-gem 'active_model_serializers', '~> 0.10.7'
+gem 'active_model_serializers', '~> 0.10.10'
 gem 'health_check', '~> 3.0'
 
 # models
