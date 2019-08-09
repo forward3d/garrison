@@ -43,6 +43,7 @@ FROM ruby:2.6-alpine3.10
 ARG RAILS_ENV=production
 ENV RAILS_ENV=$RAILS_ENV
 
+RUN apk upgrade --no-cache
 RUN apk add --no-cache libpq tzdata
 
 WORKDIR /usr/src/garrison
