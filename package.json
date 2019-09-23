@@ -4,7 +4,7 @@
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.10.2",
     "bootstrap": "^4.1.1",
-    "bootstrap-select": "^1.13.1",
+    "bootstrap-select": "^1.13.11",
     "chart.js": "^2.7.2",
     "jmespath": "^0.15.0",
     "jquery": "^3.3.1",
