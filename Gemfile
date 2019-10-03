@@ -14,7 +14,7 @@ gem 'health_check', '~> 3.0'
 
 # models
 gem 'aasm', '~> 5.0'
-gem 'friendly_id', '~> 5.2', '>= 5.2.4'
+gem 'friendly_id', '~> 5.3'
 gem 'goldiloader', '~> 3.1', '>= 3.1.1'
 
 # frontend
