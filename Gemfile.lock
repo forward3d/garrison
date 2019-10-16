@@ -81,7 +81,7 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     concurrent-ruby (1.1.5)
-    crass (1.0.4)
+    crass (1.0.5)
     discard (1.1.0)
       activerecord (>= 4.2, < 7)
     erubi (1.9.0)
