@@ -27,7 +27,7 @@ gem 'discard', '~> 1.0'
 
 group :assets do
   gem 'coffee-rails', '~> 5.0'
-  gem 'sass-rails', '~> 5.0'
+  gem 'sass-rails', '~> 6.0'
   gem 'uglifier', '>= 1.3.0'
 end
 
