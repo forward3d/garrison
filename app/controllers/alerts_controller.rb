@@ -29,7 +29,7 @@ class AlertsController < ApplicationController
       @alerts = @alerts.state(@filter_params[:states])
     end
 
-    @alerts = @alerts.order('severities.order desc, last_detected_at desc')
+    @pagy, @alerts = pagy(@alerts.order('severities.order desc, last_detected_at desc'))
   end
 
   def show
