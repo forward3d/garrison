@@ -23,9 +23,6 @@
             - if family.alerts.state(:verified).count > 0
               %span.fa-layers-counter.state-verified-bg{title: 'Verified', style: 'top: 16px'}= family.alerts.state(:verified).count
   .bottom
-    .version
-      %i.fas.fa-fw.fa-code-branch
-      = Rails.configuration.source_commit
   -#   %nav.nav
   -#     .dropup
   -#       %a.nav-link{"data-toggle" => "dropdown", href: "", title: "Profile"}
