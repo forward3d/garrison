@@ -80,4 +80,6 @@
         .detail= alert.detail
         .source= alert.source.name
         .date= alert.last_detected_at
+
+    = pagy_bootstrap_nav(@pagy).html_safe
   .alert-detail.col-9.offset-3.offset-sm-5.offset-md-4.offset-lg-3.offset-xl-3
