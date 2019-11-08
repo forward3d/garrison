@@ -1,5 +1,4 @@
 FROM ruby:2.6-alpine3.10 as build
-MAINTAINER developers@forward3d.com
 
 ARG RAILS_ENV=production
 ENV RAILS_ENV=$RAILS_ENV
@@ -60,9 +59,6 @@ RUN set -ex; \
     bundle install;\
     apk add --no-cache build-base nodejs; \
   fi;
-
-RUN echo $SOURCE_BRANCH >> /usr/src/garrison/source_branch
-RUN echo $SOURCE_COMMIT >> /usr/src/garrison/source_commit
 
 EXPOSE 3000
 CMD ["bin/entry"]
