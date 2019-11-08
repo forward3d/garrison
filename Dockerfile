@@ -48,6 +48,7 @@ RUN apk add --no-cache libpq tzdata
 WORKDIR /usr/src/garrison
 COPY --from=build /usr/local/bundle /usr/local/bundle
 COPY --from=build /usr/src/garrison /usr/src/garrison
+COPY app/assets/config /usr/src/garrison/app/assets/config
 
 ENV RAILS_LOG_TO_STDOUT true
 ENV RAILS_SERVE_STATIC_FILES true
