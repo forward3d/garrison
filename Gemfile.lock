@@ -115,7 +115,7 @@ GEM
     i18n (1.7.0)
       concurrent-ruby (~> 1.0)
     io-like (0.3.0)
-    json (2.2.0)
+    json (2.3.0)
     jsonapi-renderer (0.2.2)
     listen (3.2.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
