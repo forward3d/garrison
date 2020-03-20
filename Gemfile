@@ -24,7 +24,7 @@ gem 'pagy', '~> 3.7'
 
 # utility
 gem 'bootsnap', '>= 1.1.0', require: false
-gem 'discard', '~> 1.0'
+gem 'discard', '~> 1.2'
 
 group :assets do
   gem 'coffee-rails', '~> 5.0'
