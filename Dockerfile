@@ -43,7 +43,7 @@ ARG RAILS_ENV=production
 ENV RAILS_ENV=$RAILS_ENV
 
 RUN apk upgrade --no-cache
-RUN apk add --no-cache libpq tzdata
+RUN apk add --no-cache libpq tzdata xz-libs
 
 WORKDIR /usr/src/garrison
 COPY --from=build /usr/local/bundle /usr/local/bundle
