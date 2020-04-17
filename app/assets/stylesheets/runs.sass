@@ -1,0 +1,32 @@
+.runs
+  width: 100%
+
+  table
+    width: 100%
+    margin-left: 10px
+
+    thead
+      text-transform: uppercase
+      color: rgba(255, 255, 255, 0.5)
+
+    tbody
+      font-weight: normal
+      line-height: normal
+      font-family: Ubuntu Mono
+      color: rgba(255, 255, 255, 0.75)
+
+    td
+      .badge
+        text-transform: capitalize
+
+        &.state-complete
+          background: rgb(0, 160, 60)
+        &.state-initial
+          background: rgb(41, 70, 128)
+        &.state-failed
+          background: rgb(240, 140, 17)
+
+      &.source
+        color: white
+      &.id
+        font-size: small

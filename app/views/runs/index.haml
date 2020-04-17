@@ -1,0 +1,28 @@
+.row
+  .runs
+    %table
+      %thead
+        %th Run UUID
+        %th Agent UUID
+        %th Source
+        %th Check
+        %th State
+        %th Started At
+        %th Ended At
+        %th Duration
+      %tbody
+        - @runs.each do |run|
+          %tr
+            %td.id= run.id
+            %td.id= run.agent.id
+            %td.source
+              %i{class: run.agent.source.icon}
+              = run.agent.source.name
+            %td= run.agent.check
+            %td
+              %span.badge{class: "state-#{run.state}"}= run.state
+            %td= run.started_at
+            %td= run.ended_at
+            %td= distance_of_time_in_words(run.started_at, run.ended_at, include_seconds: true) if run.started_at && run.ended_at
+
+    = pagy_bootstrap_nav(@pagy).html_safe

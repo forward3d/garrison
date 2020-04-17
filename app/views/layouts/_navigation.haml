@@ -13,6 +13,7 @@
               %span.fa-layers-counter.state-unverified-bg{title: 'Unverified'}= kind.alerts.state(:unverified).count
             - if kind.alerts.state(:verified).count > 0
               %span.fa-layers-counter.state-verified-bg{title: 'Verified', style: 'top: 16px'}= kind.alerts.state(:verified).count
+
       .divider Family
       - Family.kept.all.each do |family|
         = link_to alerts_path(alert: { families: [family.slug], states: ['unverified', 'verified'] }), title: family.name, class: 'nav-link' do
@@ -22,6 +23,11 @@
               %span.fa-layers-counter.state-unverified-bg{title: 'Unverified'}= family.alerts.state(:unverified).count
             - if family.alerts.state(:verified).count > 0
               %span.fa-layers-counter.state-verified-bg{title: 'Verified', style: 'top: 16px'}= family.alerts.state(:verified).count
+
+      .divider Utility
+      = link_to runs_path, title: "Runs", class: 'nav-link' do
+        %span.fa-layers.fa-fw{style: "font-size: 2.5em"}
+          %i.fa-fw.fas.fa-running
   -# .bottom
   -#   %nav.nav
   -#     .dropup

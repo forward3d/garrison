@@ -12,6 +12,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :runs, only: [:index]
+
   namespace :api do
     namespace :v1 do
       resources :agents, only: [:index, :create, :show]
