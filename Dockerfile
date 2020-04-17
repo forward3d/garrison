@@ -1,4 +1,4 @@
-FROM ruby:2.6-alpine3.10 as build
+FROM ruby:2.7.1-alpine3.11 as build
 
 ARG RAILS_ENV=production
 ENV RAILS_ENV=$RAILS_ENV
@@ -12,9 +12,9 @@ COPY Gemfile Gemfile.lock /usr/src/garrison/
 
 RUN set -ex; \
   if [ "$RAILS_ENV" = "production" ]; then \
-    bundle install --jobs "$(getconf _NPROCESSORS_ONLN)" --retry 5 --without test development; \
+  bundle install --jobs "$(getconf _NPROCESSORS_ONLN)" --retry 5 --without test development; \
   elif [ "$RAILS_ENV" = "development" ]; then \
-    bundle install --jobs "$(getconf _NPROCESSORS_ONLN)" --retry 5; \
+  bundle install --jobs "$(getconf _NPROCESSORS_ONLN)" --retry 5; \
   fi;
 
 RUN rm /usr/local/bundle/cache/*.gem
@@ -22,9 +22,9 @@ RUN rm /usr/local/bundle/cache/*.gem
 COPY package.json yarn.lock /usr/src/garrison/
 RUN set -ex; \
   if [ "$RAILS_ENV" = "production" ]; then \
-    yarn install --frozen-lockfile --production && yarn cache clean; \
+  yarn install --frozen-lockfile --production && yarn cache clean; \
   elif [ "$RAILS_ENV" = "development" ]; then \
-    yarn install --frozen-lockfile && yarn cache clean; \
+  yarn install --frozen-lockfile && yarn cache clean; \
   fi;
 
 COPY . /usr/src/garrison
@@ -37,7 +37,7 @@ RUN find /usr/local/bundle -iname '*.o' -exec rm {} \;
 RUN find /usr/local/bundle -iname '*.a' -exec rm {} \;
 
 # RUNTIME CONTAINER
-FROM ruby:2.6-alpine3.10
+FROM ruby:2.7.1-alpine3.11
 
 ARG RAILS_ENV=production
 ENV RAILS_ENV=$RAILS_ENV
@@ -55,10 +55,10 @@ ENV RAILS_SERVE_STATIC_FILES true
 
 RUN set -ex; \
   if [ "$RAILS_ENV" = "production" ]; then \
-    bundle install --without assets;\
+  bundle install --without assets;\
   elif [ "$RAILS_ENV" = "development" ]; then \
-    bundle install;\
-    apk add --no-cache build-base nodejs; \
+  bundle install;\
+  apk add --no-cache build-base nodejs; \
   fi;
 
 EXPOSE 3000
