@@ -7,10 +7,10 @@
   resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-free/-/fontawesome-free-5.13.0.tgz#fcb113d1aca4b471b709e8c9c168674fbd6e06d9"
   integrity sha512-xKOeQEl5O47GPZYIMToj6uuA2syyFlq9EMSl2ui0uytjY9xbe8XS0pexNWmxrdcCyNGyDmLyYw5FtKsalBUeOg==
 
-bootstrap-select@^1.13.15:
-  version "1.13.15"
-  resolved "https://registry.yarnpkg.com/bootstrap-select/-/bootstrap-select-1.13.15.tgz#f82511cef1e783af9935278533721b1d0f3076bb"
-  integrity sha512-Bd881wlM3U7reEadavsdv7gC2kpYm0HnjVazzpr0KckN4A1oeD20g1rIzy/dWKQICdy+xQeyd3FikZWjsKPtjA==
+bootstrap-select@^1.13.16:
+  version "1.13.16"
+  resolved "https://registry.yarnpkg.com/bootstrap-select/-/bootstrap-select-1.13.16.tgz#a2f8b8d93fc285030af504a0d1d20677706f3826"
+  integrity sha512-59hUIrW/ldENJDNmliRH3Mzbbrn+XHH5bK0yAy/743Thf8nXA9afNjgr+j1j6tg7NYexEqtE2N8NodHfwMQ0+Q==
 
 bootstrap@^4.4.1:
   version "4.4.1"
