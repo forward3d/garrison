@@ -18,7 +18,7 @@ gem 'friendly_id', '~> 5.4'
 gem 'goldiloader', '~> 3.1', '>= 3.1.1'
 
 # frontend
-gem 'haml', '~> 5.1'
+gem 'haml', '~> 5.2'
 gem 'turbolinks', '~> 5'
 gem 'pagy', '~> 3.8'
 
