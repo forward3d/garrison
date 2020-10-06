@@ -2,7 +2,7 @@
   "name": "garrison",
   "private": true,
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^5.15.0",
+    "@fortawesome/fontawesome-free": "^5.15.1",
     "bootstrap": "^4.5.2",
     "bootstrap-select": "^1.13.18",
     "chart.js": "^2.9.3",
