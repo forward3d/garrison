@@ -5,7 +5,7 @@
     "@fortawesome/fontawesome-free": "^5.15.1",
     "bootstrap": "^4.5.3",
     "bootstrap-select": "^1.13.18",
-    "chart.js": "^2.9.3",
+    "chart.js": "^2.9.4",
     "jmespath": "^0.15.0",
     "jquery": "^3.5.1",
     "moment": "^2.29.1",
