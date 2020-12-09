@@ -20,7 +20,7 @@ gem 'goldiloader', '~> 3.1', '>= 3.1.1'
 # frontend
 gem 'haml', '~> 5.2'
 gem 'turbolinks', '~> 5'
-gem 'pagy', '~> 3.9'
+gem 'pagy', '~> 3.10'
 
 # utility
 gem 'bootsnap', '>= 1.1.0', require: false
