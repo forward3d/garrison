@@ -107,7 +107,7 @@ GEM
     goldiloader (3.1.1)
       activerecord (>= 4.2, < 6.1)
       activesupport (>= 4.2, < 6.1)
-    haml (5.2.0)
+    haml (5.2.1)
       temple (>= 0.8.0)
       tilt
     i18n (1.8.5)
