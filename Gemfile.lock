@@ -110,7 +110,7 @@ GEM
     haml (5.2.0)
       temple (>= 0.8.0)
       tilt
-    i18n (1.8.5)
+    i18n (1.8.6)
       concurrent-ruby (~> 1.0)
     io-like (0.3.1)
     json (2.3.1)
