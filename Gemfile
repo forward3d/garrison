@@ -6,7 +6,7 @@ ruby '3.0.0'
 # core
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 5.1'
-gem 'rails', '~> 6.0.3'
+gem 'rails', '~> 6.1.2'
 
 # api
 gem 'active_model_serializers', '~> 0.10.10'
