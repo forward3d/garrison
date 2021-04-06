@@ -1,4 +1,4 @@
-FROM ruby:3.0.0-alpine3.13 as build
+FROM ruby:3.0.1-alpine3.13 as build
 
 ARG RAILS_ENV=production
 ENV RAILS_ENV=$RAILS_ENV
@@ -37,7 +37,7 @@ RUN find /usr/local/bundle -iname '*.o' -exec rm {} \;
 RUN find /usr/local/bundle -iname '*.a' -exec rm {} \;
 
 # RUNTIME CONTAINER
-FROM ruby:3.0.0-alpine3.13
+FROM ruby:3.0.1-alpine3.13
 
 ARG RAILS_ENV=production
 ENV RAILS_ENV=$RAILS_ENV
