@@ -1,7 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    aasm (5.1.1)
+    aasm (5.2.0)
       concurrent-ruby (~> 1.0)
     actioncable (6.0.3.5)
       actionpack (= 6.0.3.5)
@@ -126,7 +126,9 @@ GEM
     marcel (0.3.3)
       mimemagic (~> 0.3.2)
     method_source (1.0.0)
-    mimemagic (0.3.5)
+    mimemagic (0.3.10)
+      nokogiri (~> 1)
+      rake
     mini_mime (1.0.2)
     mini_portile2 (2.5.0)
     minitest (5.14.4)
@@ -232,7 +234,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  aasm (~> 5.1)
+  aasm (~> 5.2)
   active_model_serializers (~> 0.10.10)
   bootsnap (>= 1.1.0)
   byebug

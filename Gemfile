@@ -13,7 +13,7 @@ gem 'active_model_serializers', '~> 0.10.10'
 gem 'okcomputer', '~> 1.18' # health checks
 
 # models
-gem 'aasm', '~> 5.1'
+gem 'aasm', '~> 5.2'
 gem 'friendly_id', '~> 5.4'
 gem 'goldiloader', '~> 3.1', '>= 3.1.1'
 
