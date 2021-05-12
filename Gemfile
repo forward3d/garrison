@@ -15,7 +15,7 @@ gem 'okcomputer', '~> 1.18' # health checks
 # models
 gem 'aasm', '~> 5.1'
 gem 'friendly_id', '~> 5.4'
-gem 'goldiloader', '~> 3.1', '>= 3.1.1'
+gem 'goldiloader', '~> 4.1'
 
 # frontend
 gem 'haml', '~> 5.2'
