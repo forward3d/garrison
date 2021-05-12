@@ -5,7 +5,7 @@ ruby '3.0.0'
 
 # core
 gem 'pg', '>= 0.18', '< 2.0'
-gem 'puma', '~> 5.1'
+gem 'puma', '~> 5.3'
 gem 'rails', '~> 6.0.3'
 
 # api
